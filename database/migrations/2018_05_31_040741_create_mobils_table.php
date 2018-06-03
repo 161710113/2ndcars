@@ -25,8 +25,6 @@ class CreateMobilsTable extends Migration
             $table->foreign('tipe_id')->references('id')->on('tipes')->onDelete('CASCADE');
             $table->unsignedInteger('merk_id');
             $table->foreign('merk_id')->references('id')->on('merks')->onDelete('CASCADE');
-            $table->unsignedInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('members')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

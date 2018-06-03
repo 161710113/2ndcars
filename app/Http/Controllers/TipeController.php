@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tipe;
 use Illuminate\Http\Request;
+use Session;
 
 class TipeController extends Controller
 {
@@ -12,9 +13,15 @@ class TipeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //
+        $tipe= Tipe::all();
+        return view('Tipe.index', compact('tipe'));
     }
 
     /**
@@ -25,6 +32,7 @@ class TipeController extends Controller
     public function create()
     {
         //
+        return view('Tipe.create');
     }
 
     /**
@@ -36,6 +44,14 @@ class TipeController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, [
+            'nama' => 'required']);
+        $tipe = Tipe::create($request->all());
+        Session::flash("flash_notification", [
+        "level"=>"success",
+        "message"=>"Berhasil menyimpan data Tipe : $tipe->nama"
+        ]);
+        return redirect()->route('tipe.index');
     }
 
     /**
@@ -58,6 +74,8 @@ class TipeController extends Controller
     public function edit(Tipe $tipe)
     {
         //
+        $tipe = Tipe::findOrFail($id);
+        return view('Tipe.edit',compact('tipe'));
     }
 
     /**
@@ -70,6 +88,15 @@ class TipeController extends Controller
     public function update(Request $request, Tipe $tipe)
     {
         //
+        $this->validate($request, [
+            'nama' => 'required']);
+        $tipe = Tipe::find($id);
+        $tipe->update($request->all());
+        Session::flash("flash_notification", [
+        "level"=>"success",
+        "message"=>"Berhasil menyimpan data dengan nama : $tipe->nama"
+        ]);
+        return redirect()->route('tipe.index');
     }
 
     /**
@@ -81,5 +108,11 @@ class TipeController extends Controller
     public function destroy(Tipe $tipe)
     {
         //
+        Tipe::destroy($id);
+        Session::flash("flash_notification", [
+        "level"=>"success",
+        "message"=>"Tipe berhasil dihapus"
+        ]);
+        return redirect()->route('tipe.index');
     }
 }
