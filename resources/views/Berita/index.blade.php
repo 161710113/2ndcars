@@ -23,7 +23,7 @@
 				  		@foreach($berita as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td><img src="assets/admin/images/berita/{{ $data->gambar }}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
+				    	<td><img src="{{ asset('assets/admin/images/berita'.$data->gambar)  }}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
 				    	<td><p>{{ $data->judul }}</p></td>
 				    	<td><p>{{ $data->isi }}</p></td>
 				    	<td></td>

@@ -52,7 +52,7 @@ class BeritaController extends Controller
         $uploaded_gambar = $request->file('gambar');
         $extension = $uploaded_gambar->getClientOriginalExtension();
         $filename = md5(time()) . '.' . $extension;
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'assets/admin/images/berita';
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'assets\admin\images\berita';
         $uploaded_gambar->move($destinationPath, $filename);
         $berita->gambar = $filename;
         $berita->save();
@@ -70,7 +70,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $berita)
+    public function show(Berita $id)
     {
         //
     }
@@ -81,7 +81,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function edit(Berita $berita)
+    public function edit($id)
     {
         //
         $berita = Berita::findOrFail($id);
@@ -95,7 +95,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Berita $berita)
+    public function update(Request $request,$id)
     {
         //
         $this->validate($request, [
@@ -132,7 +132,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Berita $berita)
+    public function destroy($id)
     {
         //
         Berita::destroy($id);
