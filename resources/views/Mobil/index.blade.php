@@ -34,8 +34,8 @@
                         <td><p>{{ $data->no_hp }}</p></td>
                         <td><p>{{ $data->harga }}</p></td>
                         <td><p>{{ $data->deskripsi }}</p></td>
-                        <td><p>{{ $data->tipe_id }}</p></td>
-                        <td><p>{{ $data->merk_id }}</p></td>
+                        <td><p>{{ $data->tipe->nama }}</p></td>
+                        <td><p>{{ $data->merk->nama }}</p></td>
 				    	<td></td>
 						<td>
 							<a class="btn btn-default" href="{{ route('mobil.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
