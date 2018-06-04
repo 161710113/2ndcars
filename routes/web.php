@@ -18,3 +18,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
+    Route::resource('berita','BeritaController');
+    Route::resource('tipe','TipeController');
+    Route::resource('merk','MerkController');
+    Route::resource('mobil','MobilController');
+});

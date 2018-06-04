@@ -90,7 +90,7 @@ class TipeController extends Controller
         //
         $this->validate($request, [
             'nama' => 'required']);
-        $tipe = Tipe::find($id);
+        $tipe = Tipe::findOrFail($id);
         $tipe->update($request->all());
         Session::flash("flash_notification", [
         "level"=>"success",

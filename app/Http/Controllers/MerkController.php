@@ -45,25 +45,8 @@ class MerkController extends Controller
     {
         //
         $this->validate($request, [
-            'logo' => 'required',
             'nama' => 'required',
             'deskripsi' => 'required']);
-        $merk = Merk::create($request->except('logo'));
-        // isi field logo jika ada logo yang diupload
-        if ($request->hasFile('logo')) {
-        // Mengambil file yang diupload
-        $uploaded_logo = $request->file('logo');
-        // mengambil extension file
-        $extension = $uploaded_logo->getClientOriginalExtension();
-        // membuat nama file random berikut extension
-        $filename = md5(time()) . '.' . $extension;
-        // menyimpan logo ke folder public/img
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
-        $uploaded_logo->move($destinationPath, $filename);
-        // mengisi field logo di merk dengan filename yang baru dibuat
-        $merk->logo = $filename;
-        $merk->save();
-        }
         $merk = Merk::create($request->all());
         Session::flash("flash_notification", [
         "level"=>"success",
@@ -107,26 +90,8 @@ class MerkController extends Controller
     {
         //
         $this->validate($request, [
-            'logo' => 'required',
             'nama' => 'required',
             'deskripsi' => 'required']);
-        $merk = Merk::find($id);
-        $merk -> update($request->all());
-        // isi field logo jika ada logo yang diupload
-        if ($request->hasFile('logo')) {
-        // Mengambil file yang diupload
-        $uploaded_logo = $request->file('logo');
-        // mengambil extension file
-        $extension = $uploaded_logo->getClientOriginalExtension();
-        // membuat nama file random berikut extension
-        $filename = md5(time()) . '.' . $extension;
-        // menyimpan logo ke folder public/img
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
-        $uploaded_logo->move($destinationPath, $filename);
-        // mengisi field logo di merk dengan filename yang baru dibuat
-        $merk->logo = $filename;
-        $merk->save();
-        }
         Session::flash("flash_notification", [
         "level"=>"success",
         "message"=>"Berhasil menyimpan data dengan nama : $merk->nama"

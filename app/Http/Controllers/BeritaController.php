@@ -44,22 +44,16 @@ class BeritaController extends Controller
     {
         //
         $this->validate($request, [
-            'gambar'=> 'required',
+            'gambar'=> 'image',
             'judul'=> 'required',
             'isi'=> 'required']);
         $berita = Berita::create($request->except('gambar'));
-        // isi field gambar jika ada gambar yang diupload
         if ($request->hasFile('gambar')) {
-        // Mengambil file yang diupload
         $uploaded_gambar = $request->file('gambar');
-        // mengambil extension file
         $extension = $uploaded_gambar->getClientOriginalExtension();
-        // membuat nama file random berikut extension
         $filename = md5(time()) . '.' . $extension;
-        // menyimpan gambar ke folder public/img
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'assets/admin/images/berita';
         $uploaded_gambar->move($destinationPath, $filename);
-        // mengisi field gambar di berita dengan filename yang baru dibuat
         $berita->gambar = $filename;
         $berita->save();
         }

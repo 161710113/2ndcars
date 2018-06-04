@@ -1,6 +1,8 @@
 <?php
 
 namespace App;
+use App\Merk;
+use App\Tipe;
 
 use Illuminate\Database\Eloquent\Model;
 
