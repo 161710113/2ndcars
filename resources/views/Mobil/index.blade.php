@@ -20,6 +20,7 @@
                       <th>Deskripsi</th>
                       <th>Tipe</th>
                       <th>Merk</th>
+					  <th>Pemilik</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -36,6 +37,7 @@
                         <td><p>{{ $data->deskripsi }}</p></td>
                         <td><p>{{ $data->tipe->nama }}</p></td>
                         <td><p>{{ $data->merk->nama }}</p></td>
+						<td><p>{{ $data->member->nama }}</p></td>
 				    	<td></td>
 						<td>
 							<a class="btn btn-default" href="{{ route('mobil.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>

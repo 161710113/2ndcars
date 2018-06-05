@@ -11,6 +11,6 @@ class Iklan extends Model
     public $timestamp = true;
 
     public function Mobil() {
-		return $this->belongsTo('App/Mobil', 'mobil_id');
+		return $this->belongsTo('App\Mobil', 'mobil_id');
 	}
 }

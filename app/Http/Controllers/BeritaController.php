@@ -44,7 +44,7 @@ class BeritaController extends Controller
     {
         //
         $this->validate($request, [
-            'gambar'=> 'image',
+            'gambar'=> 'image|max:20048',
             'judul'=> 'required',
             'isi'=> 'required']);
         $berita = Berita::create($request->except('gambar'));
@@ -52,7 +52,7 @@ class BeritaController extends Controller
         $uploaded_gambar = $request->file('gambar');
         $extension = $uploaded_gambar->getClientOriginalExtension();
         $filename = md5(time()) . '.' . $extension;
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'assets\admin\images\berita';
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img\berita';
         $uploaded_gambar->move($destinationPath, $filename);
         $berita->gambar = $filename;
         $berita->save();
@@ -70,7 +70,7 @@ class BeritaController extends Controller
      * @param  \App\Berita  $berita
      * @return \Illuminate\Http\Response
      */
-    public function show(Berita $id)
+    public function show($id)
     {
         //
     }
@@ -99,7 +99,7 @@ class BeritaController extends Controller
     {
         //
         $this->validate($request, [
-            'gambar'=> 'required',
+            'gambar'=> 'image|max:20048',
             'judul'=> 'required',
             'isi'=> 'required']);
         $berita = Berita::find($id);
@@ -113,7 +113,7 @@ class BeritaController extends Controller
         // membuat nama file random berikut extension
         $filename = md5(time()) . '.' . $extension;
         // menyimpan gambar ke folder public/img
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img\berita';
         $uploaded_gambar->move($destinationPath, $filename);
         // mengisi field gambar di berita dengan filename yang baru dibuat
         $berita->gambar = $filename;

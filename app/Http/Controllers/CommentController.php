@@ -2,26 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Iklan;
+use App\User;
+use App\Berita;
+use App\Comment;
 use Illuminate\Http\Request;
-use Session;
 
-class IklanController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
         //
-        $iklan= Iklan::with('Mobil')->get();
-        return view('Iklan.index', compact('iklan'));
+        $comment= Comment::all();
+        return view('Comment.index', compact('comment'));
     }
 
     /**
@@ -32,7 +29,9 @@ class IklanController extends Controller
     public function create()
     {
         //
-        return view('Iklan.index');
+        $berita= Berita::all();
+        $user= User::all();
+        return view('Comment.create',compact('berita','user'));
     }
 
     /**
@@ -45,76 +44,81 @@ class IklanController extends Controller
     {
         //
         $this->validate($request, [
-            'mobil_id' => 'required']);
-        $iklan = Iklan::create($request->all());
+            'komentar' => 'required',
+            'member_id' => 'required',
+            'berita_id' => 'required']);
+        $comment = Comment::create($request->all());
         Session::flash("flash_notification", [
         "level"=>"success",
-        "message"=>"Berhasil menyimpan Iklan"
+        "message"=>"Berhasil Mengirim Komentar"
         ]);
-        return redirect()->route('iklan.index');
+        return redirect()->route('comment.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Iklan  $iklan
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        $iklan = Iklan::findOrFail($id);
-        return view('Iklan.show',compact('iklan'));
+        $comment = Comment::findOrFail($id);
+        return view('Comment.show',compact('comment'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Iklan  $iklan
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        $iklan = Iklan::findOrFail($id);
-        return view('Iklan.edit',compact('iklan'));
+        $user = User::all();
+        $comment = Comment::findOrFail($id);
+        return view('Comment.edit',compact('comment','user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Iklan  $iklan
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request,$id)
     {
         //
         $this->validate($request, [
-            'mobil_id' => 'required']);
-        $iklan = Iklan::find($id);
-        $iklan->update($request->all());
+            'komentar' => 'required',
+            'member_id' => 'required',
+            'berita_id' => 'required']);
+        $comment = Comment::findOrFail($id);
+        $comment->update($request->all());
         Session::flash("flash_notification", [
         "level"=>"success",
-        "message"=>"Berhasil menyimpan Iklan"
+        "message"=>"Berhasil Mengupdate Komentar"
         ]);
-        return redirect()->route('iklan.index');
+        return redirect()->route('comment.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Iklan  $iklan
+     * @param  \App\Comment  $comment
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        Iklan::destroy($id);
+        Comment::destroy($id);
         Session::flash("flash_notification", [
         "level"=>"success",
-        "message"=>"Iklan berhasil dihapus"
+        "message"=>"Comment berhasil dihapus"
         ]);
-        return redirect()->route('iklan.index');
+        return redirect()->route('comment.index');
     }
 }

@@ -13,7 +13,7 @@
 			  		{{ csrf_field() }}
                       <div class="form-group {{ $errors->has('gambar') ? ' has-error' : '' }}">
 			  			<label class="control-label">Foto</label>	
-			  			<input type="file" id="gambar" name="gambar" class="validate" accept="img/*" required>
+			  			<input type="file" id="gambar" name="gambar" class="validate" accept="image/*" required>
 			  			@if ($errors->has('gambar'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('gambar') }}</strong>

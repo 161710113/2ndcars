@@ -76,7 +76,7 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function show(galeri $galeri)
+    public function show($id)
     {
         //
         $galeri = Galeri::findOrFail($id);
@@ -89,7 +89,7 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function edit(galeri $galeri)
+    public function edit($id)
     {
         //
         $galeri = Galeri::findOrFail($id);
@@ -103,7 +103,7 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, galeri $galeri)
+    public function update(Request $request,$id)
     {
         //
         $this->validate($request, [
@@ -139,7 +139,7 @@ class GaleriController extends Controller
      * @param  \App\galeri  $galeri
      * @return \Illuminate\Http\Response
      */
-    public function destroy(galeri $galeri)
+    public function destroy($id)
     {
         //
         Galeri::destroy($id);

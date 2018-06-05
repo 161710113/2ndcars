@@ -22,4 +22,7 @@ class Mobil extends Model
     public function Tipe() {
       return $this->belongsTo('App\Tipe', 'tipe_id');
     }
+    public function Member() {
+      return $this->belongsTo('App\Member', 'member_id');
+    }
 }

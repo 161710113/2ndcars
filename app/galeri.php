@@ -11,6 +11,6 @@ class galeri extends Model
     public $timestamp = true;
 
     public function Iklan() {
-        return $this->belongsTo('App/Mobil', 'mobil_id');
+        return $this->belongsTo('App\Mobil', 'mobil_id');
   }
 }

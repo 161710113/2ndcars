@@ -60,7 +60,7 @@ class TipeController extends Controller
      * @param  \App\Tipe  $tipe
      * @return \Illuminate\Http\Response
      */
-    public function show(Tipe $tipe)
+    public function show($id)
     {
         //
     }
@@ -71,7 +71,7 @@ class TipeController extends Controller
      * @param  \App\Tipe  $tipe
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tipe $tipe)
+    public function edit($id)
     {
         //
         $tipe = Tipe::findOrFail($id);
@@ -85,7 +85,7 @@ class TipeController extends Controller
      * @param  \App\Tipe  $tipe
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tipe $tipe)
+    public function update(Request $request,$id)
     {
         //
         $this->validate($request, [
@@ -105,7 +105,7 @@ class TipeController extends Controller
      * @param  \App\Tipe  $tipe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tipe $tipe)
+    public function destroy($id)
     {
         //
         Tipe::destroy($id);

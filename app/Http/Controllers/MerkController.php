@@ -45,8 +45,7 @@ class MerkController extends Controller
     {
         //
         $this->validate($request, [
-            'nama' => 'required',
-            'deskripsi' => 'required']);
+            'nama' => 'required']);
         $merk = Merk::create($request->all());
         Session::flash("flash_notification", [
         "level"=>"success",
@@ -61,7 +60,7 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function show(Merk $merk)
+    public function show($id)
     {
         //
     }
@@ -72,7 +71,7 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function edit(Merk $merk)
+    public function edit($id)
     {
         //
         $merk = Merk::findOrFail($id);
@@ -86,15 +85,16 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Merk $merk)
+    public function update(Request $request,$id)
     {
         //
         $this->validate($request, [
-            'nama' => 'required',
-            'deskripsi' => 'required']);
+            'nama' => 'required']);
+        $merk = Merk::findOrFail($id);
+        $merk->update($request->all());
         Session::flash("flash_notification", [
         "level"=>"success",
-        "message"=>"Berhasil menyimpan data dengan nama : $merk->nama"
+        "message"=>"Berhasil menyimpan data Merk"
         ]);
         return redirect()->route('merk.index');
     }
@@ -105,7 +105,7 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Merk $merk)
+    public function destroy($id)
     {
         //
         Merk::destroy($id);

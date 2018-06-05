@@ -22,15 +22,6 @@
                         @endif
                       </div>
                       
-                      <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-			  			<label class="control-label">Deskripsi Merk</label>	
-			  			<input type="text" name="deskripsi" class="form-control"  required>
-			  			@if ($errors->has('deskripsi'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('deskripsi') }}</strong>
-                            </span>
-                        @endif
-			  		    </div>
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;Done</button>
 			  		</div>

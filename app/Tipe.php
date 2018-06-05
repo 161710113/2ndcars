@@ -11,6 +11,6 @@ class Tipe extends Model
     public $timestamp = true;
 
     public function Mobil() {
-        return $this->hasMany('App/Mobil', 'tipe_id');
+        return $this->hasMany('App\Mobil', 'tipe_id');
   }
 }

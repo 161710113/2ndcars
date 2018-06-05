@@ -68,7 +68,7 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function show(Mobil $mobil)
+    public function show($id)
     {
         //
         $mobil = Mobil::findOrFail($id);
@@ -81,7 +81,7 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function edit(Mobil $mobil)
+    public function edit($id)
     {
         //
         $mobil = Mobil::findOrFail($id);
@@ -95,7 +95,7 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mobil $mobil)
+    public function update(Request $request,$id)
     {
         //
         $this->validate($request, [
@@ -123,7 +123,7 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mobil $mobil)
+    public function destroy($id)
     {
         //
         if(!Mobil::destroy($id)) return redirect()->back();

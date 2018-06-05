@@ -19,9 +19,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['prefix'=>'admin','middleware'=>'auth'],function(){
     Route::resource('berita','BeritaController');
     Route::resource('tipe','TipeController');
     Route::resource('merk','MerkController');
     Route::resource('mobil','MobilController');
-});
+    Route::resource('member','MemberController');
+    Route::resource('comment','CommentController');
+    Route::resource('galeri','GaleriController');
+    Route::resource('iklan','IklanController');
