@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Merk;
 use Illuminate\Http\Request;
-use Session;
 
 class MerkController extends Controller
 {
@@ -44,13 +43,8 @@ class MerkController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
-            'nama' => 'required']);
+        $this->validate($request, ['nama_merk' => 'required']);
         $merk = Merk::create($request->all());
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan data Merk : $merk->nama"
-        ]);
         return redirect()->route('merk.index');
     }
 
@@ -63,6 +57,8 @@ class MerkController extends Controller
     public function show($id)
     {
         //
+        $merk = Merk::findOrFail($id);
+        return view('Merk.show',compact('merk'));
     }
 
     /**
@@ -85,17 +81,12 @@ class MerkController extends Controller
      * @param  \App\Merk  $merk
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         //
-        $this->validate($request, [
-            'nama' => 'required']);
-        $merk = Merk::findOrFail($id);
+        $this->validate($request, ['nama_merk' => 'required']);
+        $merk = Merk::find($id);
         $merk->update($request->all());
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan data Merk"
-        ]);
         return redirect()->route('merk.index');
     }
 
@@ -109,10 +100,6 @@ class MerkController extends Controller
     {
         //
         Merk::destroy($id);
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Merk berhasil dihapus"
-        ]);
         return redirect()->route('merk.index');
     }
 }

@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel ">
-			  <div class="panel-heading" align="center"><h2>Tambah Berita
+			  <div class="panel-heading" align="center"><h2>DATA BERITA
 			  </h2></div>
 			  <div class="panel-body">
 			  	<div class="table-responsive">
@@ -12,9 +12,9 @@
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
-					  <th>Gambar</th>
 					  <th>Title</th>
 					  <th>Content</th>
+                      <th>Pict</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -23,9 +23,9 @@
 				  		@foreach($berita as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td><img src="img/berita/{{$data->gambar}}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
 				    	<td><p>{{ $data->judul }}</p></td>
 				    	<td><p>{{ $data->isi }}</p></td>
+                        <td><img src="../img/berita/{{$data->foto}}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
 				    	<td></td>
 						<td>
 							<a class="btn btn-default" href="{{ route('berita.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Tipe extends Model
 {
     protected $table = 'tipes';
-    protected $fillable = array('nama');
+    protected $fillable = array('nama_tipe');
     public $timestamp = true;
 
     public function Mobil() {
-        return $this->hasMany('App\Mobil', 'tipe_id');
-  }
+        return $this->hasMany('App\Mobil', 'id_tipe');
+    }
 }

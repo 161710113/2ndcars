@@ -12,34 +12,34 @@
                                 <i class="fas fa-tachometer-alt"></i>Dashboard</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="/berita">Berita</a>
+                                    <a href="berita">Berita</a>
                                 </li>
                                 <li>
-                                    <a href="/tipe">Tipe</a>
+                                    <a href="tipe">Tipe</a>
                                 </li>
                                 <li>
-                                    <a href="/merk">Merk</a>
+                                    <a href="merk">Merk</a>
                                 </li>
                                 <li>
-                                    <a href="/mobil">Mobil</a>
+                                    <a href="mobil">Mobil</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/member">
-                                <i class="fas fa-chart-bar"></i>Member</a>
+                            <a href="lokasi">
+                                <i class="fas fa-chart-bar"></i>Provinsi</a>
                         </li>
                         <li>
-                            <a href="/comment">
-                                <i class="fas fa-table"></i>Comment</a>
-                        </li>
-                        <li>
-                            <a href="/galeri">
+                            <a href="galeri">
                                 <i class="far fa-check-square"></i>Galeri</a>
                         </li>
                         <li>
-                            <a href="/iklan">
-                                <i class="fas fa-calendar-alt"></i>Iklan</a>
+                            <a href="#">
+                                <i class="fas fa-table"></i>Table</a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-calendar-alt"></i>Calendar</a>
                         </li>
                         <li>
                             <a href="map.html">

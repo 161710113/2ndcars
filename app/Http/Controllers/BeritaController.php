@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Berita;
 use Illuminate\Http\Request;
-use Session;
 
 class BeritaController extends Controller
 {
@@ -19,6 +18,7 @@ class BeritaController extends Controller
     }
     public function index()
     {
+        //
         $berita= Berita::all();
         return view('Berita.index', compact('berita'));
     }
@@ -43,24 +43,26 @@ class BeritaController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
-            'gambar'=> 'image|max:20048',
-            'judul'=> 'required',
-            'isi'=> 'required']);
-        $berita = Berita::create($request->except('gambar'));
-        if ($request->hasFile('gambar')) {
-        $uploaded_gambar = $request->file('gambar');
-        $extension = $uploaded_gambar->getClientOriginalExtension();
+        $this->validate($request, ['judul' => 'required',
+                                'isi' => 'required',
+                                'foto' => 'image|max:20048']);
+        $berita = Berita::create($request->except('foto'));
+        // isi field foto jika ada foto yang diupload
+        if ($request->hasFile('foto')) {
+        // Mengambil file yang diupload
+        $uploaded_foto = $request->file('foto');
+        // mengambil extension file
+        $extension = $uploaded_foto->getClientOriginalExtension();
+        // membuat nama file random berikut extension
         $filename = md5(time()) . '.' . $extension;
+        // menyimpan foto ke folder public\img\berita
         $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img\berita';
-        $uploaded_gambar->move($destinationPath, $filename);
-        $berita->gambar = $filename;
+        $uploaded_foto->move($destinationPath, $filename);
+        // mengisi field foto di berita dengan filename yang baru dibuat
+        $berita->foto = $filename;
         $berita->save();
         }
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan Berita!!"
-        ]);
+        
         return redirect()->route('berita.index');
     }
 
@@ -73,6 +75,8 @@ class BeritaController extends Controller
     public function show($id)
     {
         //
+        $berita = Berita::findOrFail($id);
+        return view('Berita.show',compact('berita'));
     }
 
     /**
@@ -98,31 +102,27 @@ class BeritaController extends Controller
     public function update(Request $request,$id)
     {
         //
-        $this->validate($request, [
-            'gambar'=> 'image|max:20048',
-            'judul'=> 'required',
-            'isi'=> 'required']);
+        $this->validate($request, ['judul' => 'required',
+                                'isi' => 'required',
+                                'foto' => 'image|max:20048']);
         $berita = Berita::find($id);
         $berita -> update($request->all());
-        // isi field gambar jika ada gambar yang diupload
-        if ($request->hasFile('gambar')) {
+        // isi field logo jika ada logo yang diupload
+        if ($request->hasFile('foto')) {
         // Mengambil file yang diupload
-        $uploaded_gambar = $request->file('gambar');
+        $uploaded_foto = $request->file('foto');
         // mengambil extension file
-        $extension = $uploaded_gambar->getClientOriginalExtension();
+        $extension = $uploaded_foto->getClientOriginalExtension();
         // membuat nama file random berikut extension
         $filename = md5(time()) . '.' . $extension;
-        // menyimpan gambar ke folder public/img
+        // menyimpan foto ke folder public\img\berita
         $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img\berita';
-        $uploaded_gambar->move($destinationPath, $filename);
-        // mengisi field gambar di berita dengan filename yang baru dibuat
-        $berita->gambar = $filename;
+        $uploaded_foto->move($destinationPath, $filename);
+        // mengisi field foto di berita dengan filename yang baru dibuat
+        $berita->foto = $filename;
         $berita->save();
         }
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan Berita!!"
-        ]);
+
         return redirect()->route('berita.index');
     }
 
@@ -135,11 +135,7 @@ class BeritaController extends Controller
     public function destroy($id)
     {
         //
-        Berita::destroy($id);
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berita berhasil dihapus"
-        ]);
+        Berita::destroy($id); 
         return redirect()->route('berita.index');
     }
 }

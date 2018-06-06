@@ -3,21 +3,20 @@
 <div class="row">
 	<div class="container">
 		<div class="col-md-12">
-			<div class="panel">
-			  <div class="panel-heading" align="center">Edit Data Tipe
+			<div class="panel panel">
+			  <div class="panel-heading" align="center">MASUKAN PROVINSI DI INDONESIA
 			  	<div class="panel-title pull-left"><a href="{{ url()->previous() }}"><button class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span></button></a>
 			  	</div>
 			  </div>
 			  <div class="panel-body">
-			  <form action="{{ route('tipe.update',$tipe->id) }}" method="post" enctype="multipart/form-data">
-			  		<input name="_method" type="hidden" value="PATCH">
-                    {{ csrf_field() }}
-			  		<div class="form-group {{ $errors->has('nama') ? ' has-error' : '' }}">
-			  			<label class="control-label">Tipe</label>	
-			  			<input type="text" name="nama" class="form-control" value="{{ $tipe->nama }}"  required>
-			  			@if ($errors->has('nama'))
+			  	<form action="{{ route('lokasi.store') }}" method="post" enctype="multipart/form-data">
+			  		{{ csrf_field() }}
+                      <div class="form-group {{ $errors->has('provinsi') ? ' has-error' : '' }}">
+			  			<label class="control-label">Nama Provinsi</label>	
+			  			<input type="text" name="provinsi" class="form-control"  required>
+			  			@if ($errors->has('provinsi'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('nama') }}</strong>
+                                <strong>{{ $errors->first('provinsi') }}</strong>
                             </span>
                         @endif
 			  		</div>

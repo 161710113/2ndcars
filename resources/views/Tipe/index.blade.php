@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel ">
-			  <div class="panel-heading" align="center"><h2>Tambah Tipe
+			  <div class="panel-heading" align="center"><h2>DATA TIPE MOBIL
 			  </h2></div>
 			  <div class="panel-body">
 			  	<div class="table-responsive">
@@ -12,7 +12,7 @@
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
-					  <th>Nama</th>
+					  <th>Nama Tipe</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -21,7 +21,7 @@
 				  		@foreach($tipe as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td><p>{{ $data->nama }}</p></td>
+				    	<td><p>{{ $data->nama_tipe }}</p></td>
 				    	<td></td>
 						<td>
 							<a class="btn btn-default" href="{{ route('tipe.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>

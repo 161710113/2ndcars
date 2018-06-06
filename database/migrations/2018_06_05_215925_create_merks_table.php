@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGalerisTable extends Migration
+class CreateMerksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateGalerisTable extends Migration
      */
     public function up()
     {
-        Schema::create('galeris', function (Blueprint $table) {
+        Schema::create('merks', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('foto')->nullable();
-            $table->unsignedInteger('mobil_id');
-            $table->foreign('mobil_id')->references('id')->on('mobils')->onDelete('CASCADE');
+            $table->string('nama_merk');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateGalerisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('galeris');
+        Schema::dropIfExists('merks');
     }
 }

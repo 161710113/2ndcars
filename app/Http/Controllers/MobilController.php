@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Merk;
+use App\Tipe;
+use App\Lokasi;
+use App\User;
 use App\Mobil;
 use Illuminate\Http\Request;
-use Session;
 
 class MobilController extends Controller
 {
@@ -20,8 +23,8 @@ class MobilController extends Controller
     public function index()
     {
         //
-        $mobil = Mobil::with('Merk')->get();
-        return view('Mobil.index',compact('mobil'));
+        $mobil= Mobil::with('Merk')->get();
+        return view('Mobil.index', compact('mobil'));
     }
 
     /**
@@ -32,7 +35,11 @@ class MobilController extends Controller
     public function create()
     {
         //
-        return view('Mobil.create');
+        $merk = Merk::all();
+        $tipe = Tipe::all();
+        $lokasi = Lokasi::all();
+        $user = User::all();
+        return view('Mobil.create',compact('merk','tipe','lokasi','user'));
     }
 
     /**
@@ -45,20 +52,17 @@ class MobilController extends Controller
     {
         //
         $this->validate($request, [
-            'nama' => 'required',
-            'warna' => 'required',
+            'plat_nomor' => 'required',
+            'nama_mobil' => 'required',
             'transmisi' => 'required',
-            'no_hp' => 'numeric',
-            'harga' => 'numeric',
+            'no_hp' => 'required||numeric',
+            'harga' => 'required||numeric',
             'deskripsi' => 'required',
-            'Merk_id' => 'required',
-            'tipe_id' => 'required'
-        ]);
+            'id_merk' => 'required',
+            'id_tipe' => 'required',
+            'id_lokasi' => 'required',
+            'id_user' => 'required']);
         $mobil = Mobil::create($request->all());
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan $mobil->nama, dengan harga $mobil->harga"
-        ]);
         return redirect()->route('mobil.index');
     }
 
@@ -71,8 +75,8 @@ class MobilController extends Controller
     public function show($id)
     {
         //
-        $mobil = Mobil::findOrFail($id);
-        return view('Mobil.show',compact('mobil'));
+        // $mobil = Mobil::findOrFail($id);
+        // return view('Mobil.show',compact('mobil'));
     }
 
     /**
@@ -85,7 +89,15 @@ class MobilController extends Controller
     {
         //
         $mobil = Mobil::findOrFail($id);
-        return view('Mobil.edit',compact('mobil'));
+        $merk = Merk::all();
+        $tipe = Tipe::all();
+        $lokasi = Lokasi::all();
+        $user = User::all();
+        $merkselect= Merk::findOrFail($id)->id_merk;
+        $tipeselect= Tipe::findOrFail($id)->id_tipe;
+        $lokasiselect= Lokasi::findOrFail($id)->id_lokasi;
+        $userselect= User::findOrFail($id)->id_user;
+        return view('Mobil.edit',compact('mobil','merk','merkselect','tipe','tipeselect','lokasi','lokasiselect','user','userselect'));
     }
 
     /**
@@ -95,25 +107,23 @@ class MobilController extends Controller
      * @param  \App\Mobil  $mobil
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         //
         $this->validate($request, [
-            'nama' => 'required',
-            'warna' => 'required',
+            'plat_nomor' => 'required',
+            'nama_mobil' => 'required',
             'transmisi' => 'required',
-            'no_hp' => 'numeric',
-            'harga' => 'numeric',
+            'no_hp' => 'required||numeric',
+            'harga' => 'required||numeric',
             'deskripsi' => 'required',
-            'Merk_id' => 'required',
-            'tipe_id' => 'required'
-        ]);
+            'id_merk' => 'required',
+            'id_tipe' => 'required',
+            'id_lokasi' => 'required',
+            'id_user' => 'required']);
         $mobil = Mobil::find($id);
         $mobil->update($request->all());
-        Session::flash("flash_notification", [
-        "level"=>"success",
-        "message"=>"Berhasil menyimpan $mobil->nama"
-        ]);
+        
         return redirect()->route('mobil.index');
     }
 
@@ -126,6 +136,8 @@ class MobilController extends Controller
     public function destroy($id)
     {
         //
-        if(!Mobil::destroy($id)) return redirect()->back();
+        Mobil::destroy($id);
+        
+        return redirect()->route('mobil.index');
     }
 }

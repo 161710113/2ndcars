@@ -15,18 +15,20 @@ class CreateMobilsTable extends Migration
     {
         Schema::create('mobils', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nama');
-            $table->string('warna');
+            $table->string('plat_nomor');
+            $table->string('nama_mobil');
             $table->string('transmisi');
             $table->string('no_hp');
-            $table->integer('harga');
+            $table->string('harga');
             $table->longText('deskripsi');
-            $table->unsignedInteger('tipe_id');
-            $table->foreign('tipe_id')->references('id')->on('tipes')->onDelete('CASCADE');
-            $table->unsignedInteger('merk_id');
-            $table->foreign('merk_id')->references('id')->on('merks')->onDelete('CASCADE');
-            $table->unsignedInteger('member_id');
-            $table->foreign('member_id')->references('id')->on('members')->onDelete('CASCADE');
+            $table->unsignedInteger('id_merk');
+            $table->foreign('id_merk')->references('id')->on('merks')->onDelete('CASCADE');
+            $table->unsignedInteger('id_tipe');
+            $table->foreign('id_tipe')->references('id')->on('tipes')->onDelete('CASCADE');
+            $table->unsignedInteger('id_lokasi');
+            $table->foreign('id_lokasi')->references('id')->on('lokasis')->onDelete('CASCADE');
+            $table->unsignedInteger('id_user');
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

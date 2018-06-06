@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tipe;
+use App\Komentar;
 use Illuminate\Http\Request;
 
-class TipeController extends Controller
+class KomentarController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class TipeController extends Controller
     public function index()
     {
         //
-        $tipe= Tipe::all();
-        return view('Tipe.index', compact('tipe'));
+        $komentar= Komentar::with('Berita')->get();
+        return view('Komentar.index', compact('komentar'));
     }
 
     /**
@@ -31,7 +31,7 @@ class TipeController extends Controller
     public function create()
     {
         //
-        return view('Tipe.create');
+        return view('Komentar.create');
     }
 
     /**
@@ -43,63 +43,70 @@ class TipeController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, ['nama_tipe' => 'required']);
-        $tipe = Tipe::create($request->all());
-        return redirect()->route('tipe.index');
+        $this->validate($request, ['komentar' => 'required',
+            'id_berita' => 'required',
+            'id_user' => 'required']);
+        $komentar = Komentar::create($request->all());
+        
+        return redirect()->route('komentar.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Komentar  $komentar
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        $tipe = Tipe::findOrFail($id);
-        return view('Tipe.show',compact('tipe'));
+        $komentar = Komentar::findOrFail($id);
+        return view('Komentar.show',compact('komentar'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Komentar  $komentar
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        $tipe = Tipe::findOrFail($id);
-        return view('Tipe.edit',compact('tipe'));
+        $komentar = Komentar::findOrFail($id);
+        return view('Komentar.edit',compact('komentar'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Komentar  $komentar
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, ['nama_tipe' => 'required']);
-        $tipe = Tipe::find($id);
-        $tipe->update($request->all());
-        return redirect()->route('tipe.index');
+        $this->validate($request, ['komentar' => 'required',
+            'id_berita' => 'required',
+            'id_user' => 'required']);
+        $komentar = Komentar::find($id);
+        $komentar->update($request->all());
+        
+        return redirect()->route('komentar.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Komentar  $komentar
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        Tipe::destroy($id);
-        return redirect()->route('tipe.index');
+        Komentar::destroy($id);
+        
+        return redirect()->route('komentar.index');
     }
 }

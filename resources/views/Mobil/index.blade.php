@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel ">
-			  <div class="panel-heading" align="center"><h2>Tambah Mobil
+			  <div class="panel-heading" align="center"><h2>DATA MOBIL
 			  </h2></div>
 			  <div class="panel-body">
 			  	<div class="table-responsive">
@@ -12,15 +12,16 @@
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
-                      <th>Nama</th>
-                      <th>Warna</th>
+					  <th>Plat Nomor</th>
+                      <th>Mobil</th>
                       <th>Transmisi</th>
-                      <th>Nomor Handphone</th>
+                      <th>Nomor HP</th>
                       <th>Harga</th>
                       <th>Deskripsi</th>
-                      <th>Tipe</th>
                       <th>Merk</th>
-					  <th>Pemilik</th>
+                      <th>Tipe</th>
+                      <th>Lokasi</th>
+                      <th>User</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -29,15 +30,16 @@
 				  		@foreach($mobil as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-                        <td><p>{{ $data->nama }}</p></td>
-                        <td><p>{{ $data->warna }}</p></td>
+				    	<td><p>{{ $data->plat_nomor }}</p></td>
+                        <td><p>{{ $data->nama_mobil }}</p></td>
                         <td><p>{{ $data->transmisi }}</p></td>
                         <td><p>{{ $data->no_hp }}</p></td>
                         <td><p>{{ $data->harga }}</p></td>
                         <td><p>{{ $data->deskripsi }}</p></td>
-                        <td><p>{{ $data->tipe->nama }}</p></td>
-                        <td><p>{{ $data->merk->nama }}</p></td>
-						<td><p>{{ $data->member->nama }}</p></td>
+                        <td><p>{{ $data->merk->nama_merk }}</p></td>
+                        <td><p>{{ $data->tipe->nama_tipe }}</p></td>
+                        <td><p>{{ $data->lokasi->provinsi }}</p></td>
+                        <td><p>{{ $data->user->name }}</p></td>
 				    	<td></td>
 						<td>
 							<a class="btn btn-default" href="{{ route('mobil.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>

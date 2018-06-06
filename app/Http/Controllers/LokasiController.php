@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Tipe;
+use App\Lokasi;
 use Illuminate\Http\Request;
 
-class TipeController extends Controller
+class LokasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class TipeController extends Controller
     public function index()
     {
         //
-        $tipe= Tipe::all();
-        return view('Tipe.index', compact('tipe'));
+        $lokasi= Lokasi::all();
+        return view('Lokasi.index', compact('lokasi'));
     }
 
     /**
@@ -31,7 +31,7 @@ class TipeController extends Controller
     public function create()
     {
         //
-        return view('Tipe.create');
+        return view('Lokasi.create');
     }
 
     /**
@@ -43,63 +43,63 @@ class TipeController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, ['nama_tipe' => 'required']);
-        $tipe = Tipe::create($request->all());
-        return redirect()->route('tipe.index');
+        $this->validate($request, ['provinsi' => 'required']);
+        $lokasi = Lokasi::create($request->all());
+        return redirect()->route('lokasi.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        $tipe = Tipe::findOrFail($id);
-        return view('Tipe.show',compact('tipe'));
+        $lokasi = Lokasi::findOrFail($id);
+        return view('Lokasi.show',compact('lokasi'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
-        $tipe = Tipe::findOrFail($id);
-        return view('Tipe.edit',compact('tipe'));
+        $lokasi = Lokasi::findOrFail($id);
+        return view('Lokasi.edit',compact('lokasi'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
-        $this->validate($request, ['nama_tipe' => 'required']);
-        $tipe = Tipe::find($id);
-        $tipe->update($request->all());
-        return redirect()->route('tipe.index');
+        $this->validate($request, ['provinsi' => 'required']);
+        $lokasi = Lokasi::find($id);
+        $lokasi->update($request->all());
+        return redirect()->route('lokasi.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tipe  $tipe
+     * @param  \App\Lokasi  $lokasi
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        Tipe::destroy($id);
-        return redirect()->route('tipe.index');
+        Lokasi::destroy($id);
+        return redirect()->route('lokasi.index');
     }
 }

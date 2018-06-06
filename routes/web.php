@@ -17,13 +17,14 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 
+Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']],function(){
+    Route::get('/', 'BeritaController@index')->name('index');
     Route::resource('berita','BeritaController');
-    Route::resource('tipe','TipeController');
+    Route::resource('galeri','GaleriController');
+    Route::resource('lokasi','LokasiController');
     Route::resource('merk','MerkController');
     Route::resource('mobil','MobilController');
-    Route::resource('member','MemberController');
-    Route::resource('comment','CommentController');
-    Route::resource('galeri','GaleriController');
-    Route::resource('iklan','IklanController');
+    Route::resource('tipe','TipeController');
+});

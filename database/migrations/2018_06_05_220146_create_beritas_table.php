@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateIklansTable extends Migration
+class CreateBeritasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateIklansTable extends Migration
      */
     public function up()
     {
-        Schema::create('iklans', function (Blueprint $table) {
+        Schema::create('beritas', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('mobil_id');
-            $table->foreign('mobil_id')->references('id')->on('mobils')->onDelete('CASCADE');
+            $table->string('judul');
+            $table->longText('isi');
+            $table->string('foto')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateIklansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('iklans');
+        Schema::dropIfExists('beritas');
     }
 }

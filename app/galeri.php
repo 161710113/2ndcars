@@ -4,13 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class galeri extends Model
+class Galeri extends Model
 {
     protected $table = 'galeris';
-    protected $fillable = array('foto', 'mobil_id');
+    protected $fillable = array('foto', 'id_mobil');
     public $timestamp = true;
 
-    public function Iklan() {
-        return $this->belongsTo('App\Mobil', 'mobil_id');
+    public function Mobil() {
+        return $this->belongsTo('App\Mobil', 'id_mobil');
   }
 }

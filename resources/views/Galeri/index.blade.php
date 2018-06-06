@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel ">
-			  <div class="panel-heading" align="center"><h2>Tambah Galeri
+			  <div class="panel-heading" align="center"><h2>DATA FOTO FOTO MOBIL
 			  </h2></div>
 			  <div class="panel-body">
 			  	<div class="table-responsive">
@@ -13,7 +13,7 @@
 			  		<tr>
 			  		  <th>No</th>
 					  <th>Foto</th>
-						<th>Mobil</th>
+                      <th>Mobil</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -22,8 +22,8 @@
 				  		@foreach($galeri as $data)
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
-				    	<td><p>{{ $data->foto }}</p></td>
-							<td><p>{{ $data->mobil->nama }}</p></td>
+				    	<td><p><img src="../img/galeri/{{$data->foto}}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
+                        <td><p>{{ $data->mobil->nama_mobil }}</p></td>
 				    	<td></td>
 						<td>
 							<a class="btn btn-default" href="{{ route('galeri.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>

@@ -4,7 +4,7 @@
 	<div class="container">
 		<div class="col-md-12">
 			<div class="panel">
-			  <div class="panel-heading" align="center">Edit Data Merk
+			  <div class="panel-heading" align="center">EDIT DATA MERK MOBIL
 			  	<div class="panel-title pull-left"><a href="{{ url()->previous() }}"><button class="btn btn-default"><span class="glyphicon glyphicon-arrow-left"></span></button></a>
 			  	</div>
 			  </div>
@@ -12,12 +12,12 @@
 			  <form action="{{ route('merk.update',$merk->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
                     {{ csrf_field() }}
-			  		<div class="form-group {{ $errors->has('nama') ? ' has-error' : '' }}">
-			  			<label class="control-label">merk</label>	
-			  			<input type="text" name="nama" class="form-control" value="{{ $merk->nama }}"  required>
-			  			@if ($errors->has('nama'))
+			  		<div class="form-group {{ $errors->has('nama_merk') ? ' has-error' : '' }}">
+			  			<label class="control-label">Nama Merk</label>	
+			  			<input type="text" name="nama_merk" class="form-control" value="{{ $merk->nama_merk }}"  required>
+			  			@if ($errors->has('nama_merk'))
                             <span class="help-block">
-                                <strong>{{ $errors->first('nama') }}</strong>
+                                <strong>{{ $errors->first('nama_merk') }}</strong>
                             </span>
                         @endif
 			  		</div>
