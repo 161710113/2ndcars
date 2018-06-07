@@ -10,7 +10,7 @@ class Merk extends Model
     protected $fillable = array('nama_merk');
     public $timestamp = true;
 
-    public function Merk() {
-        return $this->belongsTo('App\Merk', 'id_merk');
+    public function Mobil() {
+        return $this->hasMany('App\Mobil', 'id_merk');
     }
 }

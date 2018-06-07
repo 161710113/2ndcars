@@ -5,12 +5,12 @@
 		<div class="col-md-12">
 			  <div class="panel-body">
 			  	<h2 class="sub-header">EDIT MOBIL<div class="btn btn-warning pull-right"><a href="{{ url()->previous() }}">Kembali</a></div></h2>
-			  	<form action="{{ route('mobil.update',$mobil->id) }}" method="post" enctype="multipart/form-data">
+			  	<form action="{{ route('mob.update',$mobil->id) }}" method="post" enctype="multipart/form-data">
 			  		<input name="_method" type="hidden" value="PATCH">
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('plat_nomor') ? ' has-error' : '' }}">
 			  			<label class="control-label">plat_nomor</label>	
-			  			<input type="file" name="plat_nomor" class="form-control" value="{{ $mobil->plat_nomor }}"  required>
+			  			<input type="text" name="plat_nomor" class="form-control" value="{{ $mobil->plat_nomor }}"  required>
 			  			@if ($errors->has('plat_nomor'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('plat_nomor') }}</strong>
@@ -19,7 +19,7 @@
 			  		</div>
                       <div class="form-group {{ $errors->has('nama_mobil') ? ' has-error' : '' }}">
 			  			<label class="control-label">nama_mobil</label>	
-			  			<input type="file" name="nama_mobil" class="form-control" value="{{ $mobil->nama_mobil }}"  required>
+			  			<input type="text" name="nama_mobil" class="form-control" value="{{ $mobil->nama_mobil }}"  required>
 			  			@if ($errors->has('nama_mobil'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('nama_mobil') }}</strong>
@@ -28,7 +28,7 @@
 			  		</div>
                       <div class="form-group {{ $errors->has('transmisi') ? ' has-error' : '' }}">
 			  			<label class="control-label">transmisi</label>	
-			  			<input type="file" name="transmisi" class="form-control" value="{{ $mobil->transmisi }}"  required>
+			  			<input type="text" name="transmisi" class="form-control" value="{{ $mobil->transmisi }}"  required>
 			  			@if ($errors->has('transmisi'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('transmisi') }}</strong>
@@ -37,7 +37,7 @@
 			  		</div>
                       <div class="form-group {{ $errors->has('no_hp') ? ' has-error' : '' }}">
 			  			<label class="control-label">no_hp</label>	
-			  			<input type="file" name="no_hp" class="form-control" value="{{ $mobil->no_hp }}"  required>
+			  			<input type="text" name="no_hp" class="form-control" value="{{ $mobil->no_hp }}"  required>
 			  			@if ($errors->has('no_hp'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('no_hp') }}</strong>
@@ -46,7 +46,7 @@
 			  		</div>
                       <div class="form-group {{ $errors->has('harga') ? ' has-error' : '' }}">
 			  			<label class="control-label">harga</label>	
-			  			<input type="file" name="harga" class="form-control" value="{{ $mobil->harga }}"  required>
+			  			<input type="text" name="harga" class="form-control" value="{{ $mobil->harga }}"  required>
 			  			@if ($errors->has('harga'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('harga') }}</strong>
@@ -55,7 +55,7 @@
 			  		</div>
                       <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
 			  			<label class="control-label">deskripsi</label>	
-			  			<input type="file" name="deskripsi" class="form-control" value="{{ $mobil->deskripsi }}"  required>
+			  			<input type="text" name="deskripsi" class="form-control" value="{{ $mobil->deskripsi }}"  required>
 			  			@if ($errors->has('deskripsi'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('deskripsi') }}</strong>

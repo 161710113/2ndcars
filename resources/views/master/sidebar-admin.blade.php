@@ -21,7 +21,7 @@
                                     <a href="merk">Merk</a>
                                 </li>
                                 <li>
-                                    <a href="mobil">Mobil</a>
+                                    <a href="mob">Mobil</a>
                                 </li>
                             </ul>
                         </li>

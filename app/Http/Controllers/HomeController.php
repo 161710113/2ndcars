@@ -28,4 +28,14 @@ class HomeController extends Controller
         if (Laratrust::hasRole('member')) return $this->memberDashboard(); 
         return view('home');
     }
+    
+    protected function adminDashboard() 
+    { 
+        return view('Berita.index'); 
+    }
+    protected function memberDashboard() 
+    { 
+        return view('home'); 
+    }
+
 }

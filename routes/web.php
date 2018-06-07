@@ -24,7 +24,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']],function()
     Route::resource('berita','BeritaController');
     Route::resource('galeri','GaleriController');
     Route::resource('lokasi','LokasiController');
+    Route::resource('mob','MobilController');
     Route::resource('merk','MerkController');
-    Route::resource('mobil','MobilController');
     Route::resource('tipe','TipeController');
 });

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use App\Mobil;
 use App\Merk;
 use App\Tipe;
 use App\Lokasi;
 use App\User;
-use App\Mobil;
-use Illuminate\Http\Request;
 
 class MobilController extends Controller
 {
@@ -16,14 +16,10 @@ class MobilController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     public function index()
     {
         //
-        $mobil= Mobil::with('Merk')->get();
+        $mobil = Mobil::all();
         return view('Mobil.index', compact('mobil'));
     }
 
@@ -35,11 +31,12 @@ class MobilController extends Controller
     public function create()
     {
         //
+        $mobil = Mobil::all();
         $merk = Merk::all();
         $tipe = Tipe::all();
         $lokasi = Lokasi::all();
         $user = User::all();
-        return view('Mobil.create',compact('merk','tipe','lokasi','user'));
+        return view('mobil.create', compact('mobil','merk','tipe','lokasi','user'));
     }
 
     /**
@@ -62,27 +59,28 @@ class MobilController extends Controller
             'id_tipe' => 'required',
             'id_lokasi' => 'required',
             'id_user' => 'required']);
+
         $mobil = Mobil::create($request->all());
-        return redirect()->route('mobil.index');
+        return redirect()->route('mob.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Mobil  $mobil
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         //
-        // $mobil = Mobil::findOrFail($id);
-        // return view('Mobil.show',compact('mobil'));
+        $mobil = Mobil::findOrFail($id);
+        return view ('Mobil.show',compact('mobil'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Mobil  $mobil
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -90,21 +88,21 @@ class MobilController extends Controller
         //
         $mobil = Mobil::findOrFail($id);
         $merk = Merk::all();
+        $merkselect = Mobil::findOrFail($id)->id_merk;
         $tipe = Tipe::all();
+        $tipeselect = Mobil::findOrFail($id)->id_tipe;
         $lokasi = Lokasi::all();
+        $lokasiselect = Mobil::findOrFail($id)->id_lokasi;
         $user = User::all();
-        $merkselect= Merk::findOrFail($id)->id_merk;
-        $tipeselect= Tipe::findOrFail($id)->id_tipe;
-        $lokasiselect= Lokasi::findOrFail($id)->id_lokasi;
-        $userselect= User::findOrFail($id)->id_user;
-        return view('Mobil.edit',compact('mobil','merk','merkselect','tipe','tipeselect','lokasi','lokasiselect','user','userselect'));
+        $userselect = Mobil::findOrFail($id)->id_user;
+        return view('mobil.edit',compact('mobil','merk','merkselect','tipe','tipeselect','lokasi','lokasiselect','user','userselect'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Mobil  $mobil
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -120,24 +118,24 @@ class MobilController extends Controller
             'id_merk' => 'required',
             'id_tipe' => 'required',
             'id_lokasi' => 'required',
-            'id_user' => 'required']);
+            'id_user' => 'required'
+        ]);
         $mobil = Mobil::find($id);
         $mobil->update($request->all());
-        
-        return redirect()->route('mobil.index');
+        return redirect()->route('mob.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Mobil  $mobil
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        Mobil::destroy($id);
-        
-        return redirect()->route('mobil.index');
+        $mobil =Mobil::findOrFail($id);
+        $mobil->delete();
+        return redirect()->route('mob.index');
     }
 }

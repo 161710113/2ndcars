@@ -42,10 +42,10 @@
                         <td><p>{{ $data->user->name }}</p></td>
 				    	<td></td>
 						<td>
-							<a class="btn btn-default" href="{{ route('mobil.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+							<a class="btn btn-default" href="{{ route('mob.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
 						</td>
 						<td>
-							<form method="post" action="{{ route('mobil.destroy',$data->id) }}">
+							<form method="post" action="{{ route('mob.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 
@@ -56,7 +56,7 @@
 				      @endforeach	
 				  	</tbody>
 				  </table>
-				  <div class="panel-title pull-right"><a class="btn btn-success" href="{{ route('mobil.create') }}"><span class="glyphicon glyphicon-plus"></span>&nbsp;Tambah</a>
+				  <div class="panel-title pull-right"><a class="btn btn-success" href="{{ route('mob.create') }}"><span class="glyphicon glyphicon-plus"></span>&nbsp;Tambah</a>
 			  	</div>
 				</div>
 			  </div>
