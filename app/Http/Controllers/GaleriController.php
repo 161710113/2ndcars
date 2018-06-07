@@ -20,7 +20,7 @@ class GaleriController extends Controller
     public function index()
     {
         //
-        $galeri = Galeri::with('Mobil')->get();
+        $galeri = Galeri::with('Mobi->idl')->get();
         return view('Galeri.index',compact('galeri'));
     }
 
