@@ -57,14 +57,14 @@
                             </span>
                         @endif
 			  		</div>
-                      <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-			  			<label class="control-label">Deskripsi</label>	
-			  			<input type="text" name="deskripsi" class="form-control"  required>
+                      <div class="form-group {{ $errors->has('deskripsi') ? 'has error' : ''}} ">
+			  			<label class="control-label">deskripsi</label>
+			  			<Textarea name="deskripsi" id="deskripsi" class="form-control" required></Textarea>
 			  			@if ($errors->has('deskripsi'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('deskripsi') }}</strong>
-                            </span>
-                        @endif
+			  			<span class="help-block">
+			  				<strong>{{ $errors->first('deskripsi') }}</strong>
+			  			</span>
+			  			@endif
 			  		</div>
                       <div class="form-group {{ $errors->has('id_merk') ? 'has error' : '' }}">
 			  			<label class="control-label">Merk</label>
@@ -109,7 +109,7 @@
 			  			@endif
                     </div>
                     <div class="form-group {{ $errors->has('id_user') ? 'has error' : '' }}">
-			  			<label class="control-label">Pemilik</label>
+			  			<!-- <label class="control-label">Pemilik</label>
 			  			<select name="id_user" class="form-control">
 			  				<option>-</option>
 			  				@foreach($user as $data)
@@ -120,7 +120,8 @@
 			  			<span class="help-block">
 			  				<strong>{{ $errors->first('user') }}</strong>
 			  			</span>
-			  			@endif
+			  			@endif -->
+						  <input type="hidden" name="id_user" value="{{ Auth::user()->id }}"
                     </div>
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;Done</button>

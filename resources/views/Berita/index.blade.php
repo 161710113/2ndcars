@@ -24,7 +24,7 @@
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
 				    	<td><p>{{ $data->judul }}</p></td>
-				    	<td><p>{{ $data->isi }}</p></td>
+				    	<td><p>{{ substr($data['isi'],0,100) }}</p></td>
                         <td><img src="../img/berita/{{$data->foto}}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
 				    	<td></td>
 						<td>

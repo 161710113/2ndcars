@@ -26,15 +26,22 @@
                             </span>
                         @endif
 			  		</div>
-                      <div class="form-group {{ $errors->has('transmisi') ? ' has-error' : '' }}">
-			  			<label class="control-label">transmisi</label>	
-			  			<input type="text" name="transmisi" class="form-control" value="{{ $mobil->transmisi }}"  required>
-			  			@if ($errors->has('transmisi'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('transmisi') }}</strong>
-                            </span>
-                        @endif
-			  		</div>
+					  <div class="form-group {{$errors->has('transmisi') ? 'has-error' : ''}}">
+								<label class="control-label">Transmisi</label>
+								<br>
+								<label type="radio-inline"> 
+								<input type="radio" name="transmisi" class="flat" value="Automatic" {{ $mobil->transmisi == 'automatic' ? 'checked' : '' }}> Automatic
+
+								<label type="radio-inline"> 
+								<input type="radio" name="transmisi" class="flat" value="Manual" {{ $mobil->transmisi == 'manual' ? 'checked' : '' }}> Manual
+
+							</label>
+								@if ($errors->has('transmisi'))
+									<span class="help-block">
+										<strong>{{$errors->first('transmisi')}}</strong>
+									</span>
+								@endif
+							</div>
                       <div class="form-group {{ $errors->has('no_hp') ? ' has-error' : '' }}">
 			  			<label class="control-label">no_hp</label>	
 			  			<input type="text" name="no_hp" class="form-control" value="{{ $mobil->no_hp }}"  required>
@@ -54,8 +61,8 @@
                         @endif
 			  		</div>
                       <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-			  			<label class="control-label">deskripsi</label>	
-			  			<input type="text" name="deskripsi" class="form-control" value="{{ $mobil->deskripsi }}"  required>
+			  			<label class="control-label">Deskrips</label>	
+			  			<Textarea name="deskripsi" class="form-control"  required> {{ $mobil->deskripsi }} </Textarea>
 			  			@if ($errors->has('deskripsi'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('deskripsi') }}</strong>

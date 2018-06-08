@@ -21,15 +21,15 @@
                         @endif
 			  		</div>
 
-			  		<div class="form-group {{ $errors->has('isi') ? ' has-error' : '' }}">
-			  			<label class="control-label">Content</label>	
-			  			<input type="text" name="isi" class="form-control"  required>
+			  		<div class="form-group {{ $errors->has('isi') ? 'has error' : ''}} ">
+			  			<label class="control-label">Isi Berita</label>
+			  			<Textarea name="isi" id="isi" class="form-control" required></Textarea>
 			  			@if ($errors->has('isi'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('isi') }}</strong>
-                            </span>
-                        @endif
-                      </div>
+			  			<span class="help-block">
+			  				<strong>{{ $errors->first('isi') }}</strong>
+			  			</span>
+			  			@endif
+			  		</div>
 
                     <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
 			  			<label class="control-label">Pict</label>	

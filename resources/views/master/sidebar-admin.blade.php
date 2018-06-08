@@ -1,55 +1,36 @@
 <aside class="menu-sidebar d-none d-lg-block">
             <div class="logo">
                 <a href="#">
-                    <img src="{{ asset('assets/admin/images/icon/logo_2ndcars.png') }}" alt="Cool Admin" />
+                    <img src="{{ asset('assets/admin/images/icon/logo_2ndcarss.png') }}" alt="Cool Admin" />
                 </a>
             </div>
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="berita">Berita</a>
-                                </li>
-                                <li>
-                                    <a href="tipe">Tipe</a>
-                                </li>
-                                <li>
-                                    <a href="merk">Merk</a>
-                                </li>
-                                <li>
-                                    <a href="mob">Mobil</a>
-                                </li>
-                            </ul>
+                        <li>
+                            <a href="{{route ('berita.index')}}">
+                                <i class="fas fa-chart-bar"></i>Berita</a>
                         </li>
                         <li>
-                            <a href="lokasi">
-                                <i class="fas fa-chart-bar"></i>Provinsi</a>
+                            <a href="{{route ('mob.index')}}">
+                                <i class="fas fa-chart-bar"></i>Mobil</a>
                         </li>
                         <li>
-                            <a href="galeri">
-                                <i class="far fa-check-square"></i>Galeri</a>
+                            <a href="{{route ('tipe.index')}}">
+                                <i class="far fa-check-square"></i>Tipe</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-table"></i>Table</a>
+                            <a href="{{route ('merk.index')}}">
+                                <i class="fas fa-table"></i>Merk</a>
                         </li>
                         <li>
-                            <a href="#">
-                                <i class="fas fa-calendar-alt"></i>Calendar</a>
+                            <a href="{{route ('galeri.index')}}">
+                                <i class="fas fa-calendar-alt"></i>Galeri</a>
                         </li>
                         <li>
-                            <a href="map.html">
-                                <i class="fas fa-map-marker-alt"></i>Maps</a>
+                            <a href="{{route ('lokasi.index')}}">
+                                <i class="fas fa-map-marker-alt"></i>Lokasi</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                <i class="fas fa-copy"></i>Pages</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
                                     <a href="login.html">Login</a>
                                 </li>
                                 <li>

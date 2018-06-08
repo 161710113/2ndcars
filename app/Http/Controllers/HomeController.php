@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use Laratrust\LaratrustFacade as Laratrust;
-
 class HomeController extends Controller
 {
     /**
@@ -16,7 +13,6 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
     }
-
     /**
      * Show the application dashboard.
      *
@@ -24,18 +20,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Laratrust::hasRole('admin')) return $this->adminDashboard(); 
-        if (Laratrust::hasRole('member')) return $this->memberDashboard(); 
+        if (Laratrust::hasRole('admin')) return $this->adminDashboard();
+        if (Laratrust::hasRole('member')) return $this->memberDashboard();
         return view('home');
     }
-    
-    protected function adminDashboard() 
-    { 
-        return view('Berita.index'); 
+    protected function adminDashboard()
+    {
+        return view('home');
     }
-    protected function memberDashboard() 
-    { 
-        return view('home'); 
+    protected function memberDashboard()
+    {
+        return view('home');
     }
-
 }

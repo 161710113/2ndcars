@@ -24,7 +24,7 @@
 
 			  		<div class="form-group {{ $errors->has('isi') ? ' has-error' : '' }}">
 			  			<label class="control-label">Content</label>	
-			  			<input type="text" name="isi" class="form-control" value="{{ $berita->isi }}"  required>
+			  			<Textarea name="isi" class="form-control"  required> {{ $berita->isi }} </Textarea>
 			  			@if ($errors->has('isi'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('isi') }}</strong>

@@ -35,16 +35,16 @@ class UserSeeder extends Seeder
         // Membuat sample admin 
         
         $admin = new User(); 
-        $admin->name = 'Admin Larapus'; 
-        $admin->email = 'admin@gmail.com'; 
+        $admin->name = 'Admin Haikal'; 
+        $admin->email = 'adminhaikal@gmail.com'; 
         $admin->password = bcrypt('rahasia'); 
         $admin->save(); 
         $admin->attachRole($adminRole);
         // Membuat sample member 
         
         $member = new User(); 
-        $member->name = "Sample Member"; 
-        $member->email = 'member@gmail.com'; 
+        $member->name = "Member Haikal"; 
+        $member->email = 'memberhaikal@gmail.com'; 
         $member->password = bcrypt('rahasia'); 
         $member->save(); 
         $member->attachRole($memberRole);

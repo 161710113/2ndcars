@@ -35,7 +35,7 @@
                         <td><p>{{ $data->transmisi }}</p></td>
                         <td><p>{{ $data->no_hp }}</p></td>
                         <td><p>{{ $data->harga }}</p></td>
-                        <td><p>{{ $data->deskripsi }}</p></td>
+                        <td><p>{{ substr($data['deskripsi'],0,20) }}</p></td>
                         <td><p>{{ $data->merk->nama_merk }}</p></td>
                         <td><p>{{ $data->tipe->nama_tipe }}</p></td>
                         <td><p>{{ $data->lokasi->provinsi }}</p></td>

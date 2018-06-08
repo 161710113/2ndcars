@@ -49,10 +49,10 @@ class MobilController extends Controller
     {
         //
         $this->validate($request, [
-            'plat_nomor' => 'required',
+            'plat_nomor' => 'required|unique:mobils',
             'nama_mobil' => 'required',
             'transmisi' => 'required',
-            'no_hp' => 'required||numeric',
+            'no_hp' => 'min:11|required||numeric',
             'harga' => 'required||numeric',
             'deskripsi' => 'required',
             'id_merk' => 'required',
@@ -109,17 +109,16 @@ class MobilController extends Controller
     {
         //
         $this->validate($request, [
-            'plat_nomor' => 'required',
+            'plat_nomor' => 'required|unique:mobils',
             'nama_mobil' => 'required',
             'transmisi' => 'required',
-            'no_hp' => 'required||numeric',
+            'no_hp' => 'min:11|required||numeric',
             'harga' => 'required||numeric',
             'deskripsi' => 'required',
             'id_merk' => 'required',
             'id_tipe' => 'required',
             'id_lokasi' => 'required',
-            'id_user' => 'required'
-        ]);
+            'id_user' => 'required']);
         $mobil = Mobil::find($id);
         $mobil->update($request->all());
         return redirect()->route('mob.index');
