@@ -10,8 +10,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    <img src="{{ asset('assets/admin/images/icon/logo_2ndcars.png') }}"/>
+                    <h1>HELLO!!!</h1>
+                    <h2>WELCOME BACK AGAIN!!!</h2>
+                    <h3>MAKE SOMETHING AWESOME FOR YOUR LIFE</h3>
                 </div>
             </div>
         </div>

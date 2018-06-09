@@ -8,6 +8,7 @@ use App\Merk;
 use App\Tipe;
 use App\Lokasi;
 use App\User;
+use App\Galeri;
 
 class MobilController extends Controller
 {

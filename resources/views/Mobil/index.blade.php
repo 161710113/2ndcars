@@ -22,6 +22,7 @@
                       <th>Tipe</th>
                       <th>Lokasi</th>
                       <th>User</th>
+					  <th>Dibuat pada</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -35,12 +36,12 @@
                         <td><p>{{ $data->transmisi }}</p></td>
                         <td><p>{{ $data->no_hp }}</p></td>
                         <td><p>{{ $data->harga }}</p></td>
-                        <td><p>{{ substr($data['deskripsi'],0,20) }}</p></td>
+                        <td><p>{{ substr($data['deskripsi'],0,20) }}<a href="{{ route('mob.show',$data->id) }}">...Read More</a></p></td>
                         <td><p>{{ $data->merk->nama_merk }}</p></td>
                         <td><p>{{ $data->tipe->nama_tipe }}</p></td>
                         <td><p>{{ $data->lokasi->provinsi }}</p></td>
                         <td><p>{{ $data->user->name }}</p></td>
-				    	<td></td>
+				    	<td>{{ $data->created_at->diffForHumans() }}</td>
 						<td>
 							<a class="btn btn-default" href="{{ route('mob.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
 						</td>

@@ -15,6 +15,7 @@
 					  <th>Title</th>
 					  <th>Content</th>
                       <th>Pict</th>
+					  <th>Dibuat pada</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -24,9 +25,9 @@
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
 				    	<td><p>{{ $data->judul }}</p></td>
-				    	<td><p>{{ substr($data['isi'],0,100) }}</p></td>
+				    	<td><p>{{ substr($data['isi'],0,50) }}<a href="{{ route('berita.show',$data->id) }}">...Read More</a></p></td>
                         <td><img src="../img/berita/{{$data->foto}}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
-				    	<td></td>
+				    	<td>{{ $data->created_at->diffForHumans() }}</td>
 						<td>
 							<a class="btn btn-default" href="{{ route('berita.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
 						</td>

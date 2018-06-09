@@ -13,6 +13,7 @@
 			  		<tr>
 			  		  <th>No</th>
 					  <th>Nama Merk</th>
+						<th>Dibuat pada</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -22,7 +23,7 @@
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
 				    	<td><p>{{ $data->nama_merk }}</p></td>
-				    	<td></td>
+				    	<td>{{ $data->created_at->diffForHumans() }}</td>
 						<td>
 							<a class="btn btn-default" href="{{ route('merk.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
 						</td>

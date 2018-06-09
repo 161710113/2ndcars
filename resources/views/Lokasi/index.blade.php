@@ -13,6 +13,7 @@
 			  		<tr>
 			  		  <th>No</th>
 					  <th>Nama Provinsi</th>
+						<th>Dibuat pada</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -22,6 +23,7 @@
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
 				    	<td><p>{{ $data->provinsi }}</p></td>
+							<td>{{ $data->created_at->diffForHumans() }}</td>
 				    	<td></td>
 						<td>
 							<a class="btn btn-default" href="{{ route('lokasi.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>

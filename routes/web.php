@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin|superadmin']],function(){
+Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']],function(){
     Route::get('/', 'HomeController@index')->name('home');
     Route::resource('berita','BeritaController');
     Route::resource('galeri','GaleriController');
@@ -26,5 +26,12 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin|superadmin']]
     Route::resource('mob','MobilController');
     Route::resource('merk','MerkController');
     Route::resource('tipe','TipeController');
+    
+});
+
+Route::group(['prefix'=>'home', 'middleware'=>['auth','role:member|admin']],function(){
+    Route::get('/', 'HomeController@index')->name('home');
+    Route::resource('galeri','GaleriController');
+    Route::resource('mob','MobilController');
     
 });

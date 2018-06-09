@@ -108,19 +108,9 @@
                             </span>
                         @endif
 			  		</div>
-                      <div class="form-group {{ $errors->has('id_user') ? ' has-error' : '' }}">
-			  			<label class="control-label">User</label>	
-			  			<select name="id_user" class="form-control">
-			  				@foreach($user as $data)
-			  				<option value="{{ $data->id }}"  {{ $userselect == $data->id ? 'selected="selected"' : '' }}>{{ $data->name }}</option>
-			  				@endforeach
-			  			</select>
-			  			@if ($errors->has('id_user'))
-                            <span class="help-block">
-                                <strong>{{ $errors->first('id_user') }}</strong>
-                            </span>
-                        @endif
-			  		</div>
+                      <div class="form-group {{ $errors->has('id_user') ? 'has error' : '' }}">
+						  <input type="hidden" name="id_user" value="{{ Auth::user()->id }}"
+                    </div>
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-success">Tambah</button>
 			  		</div>

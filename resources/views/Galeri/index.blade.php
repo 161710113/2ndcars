@@ -14,6 +14,7 @@
 			  		  <th>No</th>
 					  <th>Foto</th>
                       <th>Mobil</th>
+					  <th>Dibuat pada</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
 				  	</thead>
@@ -24,7 +25,7 @@
 				    	<td>{{ $no++ }}</td>
 				    	<td><p><img src="../img/galeri/{{$data->foto}}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
                         <td><p>{{ $data->mobil->nama_mobil }}</p></td>
-				    	<td></td>
+				    	<td>{{ $data->created_at->diffForHumans() }}</td>
 						<td>
 							<a class="btn btn-default" href="{{ route('galeri.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
 						</td>
