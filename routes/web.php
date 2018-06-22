@@ -11,9 +11,14 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/', 'FrontendController@index')->name('home');
+Route::get('mobil', 'FrontendController@mobil');
+Route::get('sell', 'FrontendController@jualmobil');
+Route::get('news', 'FrontendController@news');
 
 Auth::routes();
 
@@ -29,9 +34,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']],function()
     
 });
 
-Route::group(['prefix'=>'home', 'middleware'=>['auth','role:member|admin']],function(){
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('galeri','GaleriController');
-    Route::resource('mob','MobilController');
+Route::group(['prefix'=>'home', 'middleware'=>['auth','role:member']],function(){
+    Route::resource('/', 'FrontendController');
     
 });
