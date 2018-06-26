@@ -47,7 +47,7 @@
                                                         {{ Auth::user()->name }} <span class="caret"></span>
                                                     </a>
 								<ul class="sub-menu">									
-									<li><a href="{{route ('iklan')}}">Iklanku</a></li>
+									<li><a href="{{route ('iklan.index')}}">Iklanku</a></li>
 									<li><a href="href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"">
@@ -60,7 +60,8 @@
 								<a href="{{ route('login') }}">Login</a>
 								@endauth
 							@endif
-							</li>
+							</li>							
+							<li><a href="{{ route('register') }}">Register</a></li>
 						</ul>
 					</div>
                 </div>

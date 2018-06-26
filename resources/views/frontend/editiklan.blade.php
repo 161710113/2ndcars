@@ -14,12 +14,12 @@
 						<div class="dlab-tabs">
 							<div class="tab-content">
 								<div id="by-budget" class="tab-pane clearfix active in" >
-									<form action="{{ route('sell.update',$mobil->id) }}" method="post" enctype="multipart/form-data">
+									<form action="{{ route('iklan.update',$mobil->id) }}" method="post" enctype="multipart/form-data">
 			  							{{ csrf_field() }}
 										<div class="row">
 											<div>
                                             <div class="form-group {{ $errors->has('plat_nomor') ? ' has-error' : '' }}">
-                                                <label class="control-label">plat_nomor</label>	
+                                                <label class="control-label">Plat Nomor Kendaraan</label>	
                                                 <input type="text" name="plat_nomor" class="form-control" value="{{ $mobil->plat_nomor }}"  required>
                                                 @if ($errors->has('plat_nomor'))
                                                     <span class="help-block">
@@ -28,7 +28,7 @@
                                                 @endif
                                             </div>
                                             <div class="form-group {{ $errors->has('nama_mobil') ? ' has-error' : '' }}">
-                                                <label class="control-label">nama_mobil</label>	
+                                                <label class="control-label">Judul</label>	
                                                 <input type="text" name="nama_mobil" class="form-control" value="{{ $mobil->nama_mobil }}"  required>
                                                 @if ($errors->has('nama_mobil'))
                                                     <span class="help-block">
@@ -49,7 +49,7 @@
                                                 @endif
                                             </div>
                                             <div class="form-group {{ $errors->has('no_hp') ? ' has-error' : '' }}">
-                                                <label class="control-label">no_hp</label>	
+                                                <label class="control-label">Nomor Telephone</label>	
                                                 <input type="text" name="no_hp" class="form-control" value="{{ $mobil->no_hp }}"  required>
                                                 @if ($errors->has('no_hp'))
                                                     <span class="help-block">
@@ -58,7 +58,7 @@
                                                 @endif
                                             </div>
                                             <div class="form-group {{ $errors->has('harga') ? ' has-error' : '' }}">
-                                                <label class="control-label">harga</label>	
+                                                <label class="control-label">Harga</label>	
                                                 <input type="text" name="harga" class="form-control" value="{{ $mobil->harga }}"  required>
                                                 @if ($errors->has('harga'))
                                                     <span class="help-block">
@@ -67,7 +67,7 @@
                                                 @endif
                                             </div>
                                             <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-                                                <label class="control-label">Deskrips</label>	
+                                                <label class="control-label">Deskripsi</label>	
                                                 <Textarea name="deskripsi" class="form-control"  required> {{ $mobil->deskripsi }} </Textarea>
                                                 @if ($errors->has('deskripsi'))
                                                     <span class="help-block">

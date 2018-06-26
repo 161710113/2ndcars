@@ -121,7 +121,7 @@ class IklanController extends Controller
             'id_user' => 'required']);
         $mobil = Mobil::find($id);
         $mobil->update($request->all());
-        return redirect()->route('fotomobil.index');
+        return redirect()->route('iklan');
     }
 
     /**
@@ -132,8 +132,7 @@ class IklanController extends Controller
      */
     public function destroy($id)
     {
-        $mobil =Mobil::findOrFail($id);
-        $mobil->delete();
-        return redirect()->route('fotomobil.index');
+        $mobil =Mobil::destroy($id);        
+        return redirect()->back();
     }
 }

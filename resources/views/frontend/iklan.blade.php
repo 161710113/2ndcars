@@ -24,28 +24,26 @@
 				</div>
                 <div class="row">
                     <!-- Side bar start -->
-                    @foreach($mobil as $data)
+                    @foreach($mobil as $data)                    
 					<div class="col-md-3 col-sm-6 m-b30">
 						<div class="icon-bx-wraper bx-style-1 p-a20 text-center">
                             @foreach($data->galeri as $aye)
                             <div class="dlab-media"> 
                                 <a href="{{ route('detail',$data->id) }}"><img src="{{ asset('/img/galeri/'.$aye->foto) }}"  alt=""></a> 
                             </div>		
-                            @endforeach	
-							<form>                            
+                            @endforeach	                            
                             <a href="{{ route('detail',$data->id) }}"><h4>{{ $data->nama_mobil }}</h4></a>
 								<div class="input-group m-b20">
-                                <a class="btn btn-success" href="{{ route('sell.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+                                <a class="btn btn-success" href="{{ route('iklan.update',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
 								</div>
 								<div class="input-group m-b20">
-                                    <form method="post" action="{{ route('sell.destroy',$data->id) }}">
-                                        <input name="_token" type="hidden" value="{{ csrf_token() }}">
+                                    <form method="post" action="{{ route('iklan.destroy',$data->id) }}" >
+                                        <input name="_token" type="hidden" value="{!! csrf_token() !!}">
                                         <input type="hidden" name="_method" value="DELETE">
 
                                         <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
-							        </form>
+                                    </form>
                                 </div>                        							
-							</form>
 						</div>
                     </div>
                     @endforeach	        

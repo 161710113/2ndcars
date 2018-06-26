@@ -3,14 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Mobil;
-use App\Merk;
-use App\Tipe;
-use App\Lokasi;
-use App\User;
+use App\Berita;
 use App\Galeri;
+use App\Lokasi;
+use App\Merk;
+use App\Mobil;
+use App\Role;
+use App\Tipe;
+use App\User;
+use Auth;
 
-class MobilController extends Controller
+class IklankuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,9 +22,11 @@ class MobilController extends Controller
      */
     public function index()
     {
-        //
-        $mobil = Mobil::all();
-        return view('Mobil.index', compact('mobil'));
+        $mobil = Auth::user()->Mobil()->paginate(10);
+        $jumlah_data = count($mobil['Mobil']);
+        return view ('frontend.iklan',compact('mobil','jumlah_data'));
+        // $mobil = Mobil::all();
+        // return view('frontend.iklan',compact('mobil'));
     }
 
     /**
@@ -32,12 +37,6 @@ class MobilController extends Controller
     public function create()
     {
         //
-        $mobil = Mobil::all();
-        $merk = Merk::all();
-        $tipe = Tipe::all();
-        $lokasi = Lokasi::all();
-        $user = User::all();
-        return view('mobil.create', compact('mobil','merk','tipe','lokasi','user'));
     }
 
     /**
@@ -49,20 +48,6 @@ class MobilController extends Controller
     public function store(Request $request)
     {
         //
-        $this->validate($request, [
-            'plat_nomor' => 'required|unique:mobils',
-            'nama_mobil' => 'required',
-            'transmisi' => 'required',
-            'no_hp' => 'min:11|required||numeric',
-            'harga' => 'required||numeric',
-            'deskripsi' => 'required',
-            'id_merk' => 'required',
-            'id_tipe' => 'required',
-            'id_lokasi' => 'required',
-            'id_user' => 'required']);
-
-        $mobil = Mobil::create($request->all());
-        return redirect()->route('mob.index');
     }
 
     /**
@@ -74,8 +59,6 @@ class MobilController extends Controller
     public function show($id)
     {
         //
-        $mobil = Mobil::findOrFail($id);
-        return view ('Mobil.show',compact('mobil'));
     }
 
     /**
@@ -86,7 +69,6 @@ class MobilController extends Controller
      */
     public function edit($id)
     {
-        //
         $mobil = Mobil::findOrFail($id);
         $merk = Merk::all();
         $merkselect = Mobil::findOrFail($id)->id_merk;
@@ -96,7 +78,7 @@ class MobilController extends Controller
         $lokasiselect = Mobil::findOrFail($id)->id_lokasi;
         $user = User::all();
         $userselect = Mobil::findOrFail($id)->id_user;
-        return view('mobil.edit',compact('mobil','merk','merkselect','tipe','tipeselect','lokasi','lokasiselect','user','userselect'));
+        return view('frontend.editiklan',compact('mobil','merk','merkselect','tipe','tipeselect','lokasi','lokasiselect','user','userselect'));
     }
 
     /**
@@ -107,7 +89,7 @@ class MobilController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {        
+    {
         $this->validate($request, [
             'plat_nomor' => 'required|unique:mobils',
             'nama_mobil' => 'required',
@@ -119,9 +101,9 @@ class MobilController extends Controller
             'id_tipe' => 'required',
             'id_lokasi' => 'required',
             'id_user' => 'required']);
-        $mobil = Mobil::find($id);
+        $mobil = Mobil::findOrFail($id);
         $mobil->update($request->all());
-        return redirect()->route('mob.index');
+        return redirect()->route('iklan.index');
     }
 
     /**
@@ -132,9 +114,7 @@ class MobilController extends Controller
      */
     public function destroy($id)
     {
-        //
-        $mobil =Mobil::findOrFail($id);
-        $mobil->delete();
+        $mobil =Mobil::destroy($id);
         return redirect()->route('iklan.index');
     }
 }

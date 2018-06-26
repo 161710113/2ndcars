@@ -32,7 +32,7 @@ class FrontendController extends Controller
         $merk = Merk::all();
         $tipe = Tipe::all();
         $galeri = Galeri::all();
-        $mobil = Mobil::all();
+        $mobil = Mobil::orderBy('created_at','desc')->paginate(10);
         return view('frontend.scndcars',compact('mobil','merk','galeri','tipe')); 
     }
     public function jualmobil()
@@ -76,16 +76,8 @@ class FrontendController extends Controller
     }
     public function news()
     {
-        $berita = Berita::all();
+        $berita = Berita::orderBy('created_at','desc')->paginate(10);
         //return view('frontend.mobil');
         return view('frontend.news',compact('berita'));
-    }
-    public function iklanku()
-    {
-        $mobil = Auth::user()->Mobil()->paginate(10);
-        $jumlah_data = count($mobil['Mobil']);
-        return view ('frontend.iklan',compact('mobil','jumlah_data'));
-        // $mobil = Mobil::all();
-        // return view('frontend.iklan',compact('mobil'));
-    }
+    }    
 }

@@ -46,7 +46,7 @@
 							<a class="btn btn-default" href="{{ route('mob.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
 						</td>
 						<td>
-							<form method="post" action="{{ route('mob.destroy',$data->id) }}">
+							<form method="post" action="{{ route('sell.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
 
