@@ -40,7 +40,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']],function()
 Route::group(['prefix'=>'home', 'middleware'=>['auth','role:member']],function(){
     Route::resource('/', 'FrontendController');
     Route::resource('sell', 'IklanController');
-    Route::resource('fotomobil', 'FotoiklanController');
+    Route::get('fotomobil/{id}', 'FotoiklanController@create')->name('fotomobil');
+    Route::post('fotomobil/{id}/create', 'FotoiklanController@store')->name('fotomobil.store');
+    // Route::resource('fotomobil', 'FotoiklanController');
     
     
 });

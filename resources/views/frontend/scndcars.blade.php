@@ -26,7 +26,7 @@
 									<div class="dlab-feed-list m-b30 text-left">
 										@foreach($data->galeri as $aye)
 										<div class="dlab-media"> 
-											<a href="{{ route('detail',$data->id) }}"><img src="{{ asset('/img/galeri/'.$aye->foto) }}" style="height:280px;width:500px;margin-top:10px;" alt=""></a> 
+											<a href="{{ route('detail',$data->id) }}"><img src="{{ asset('/img/galeri/'.$aye->foto) }}" style="height:400px;width:600px;margin-top:10px;" alt=""></a> 
 										</div>		
 										@endforeach							
 										<div class="dlab-info text-left">

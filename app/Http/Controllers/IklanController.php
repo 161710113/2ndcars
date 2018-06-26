@@ -65,7 +65,7 @@ class IklanController extends Controller
             'id_user' => 'required']);
 
         $mobil = Mobil::create($request->all());
-        return redirect()->route('fotomobil.index');
+        return redirect()->route('fotomobil', $mobil->id);
     }
 
     /**

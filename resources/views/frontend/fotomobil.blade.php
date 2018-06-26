@@ -14,7 +14,7 @@
 						<div class="dlab-tabs">
 							<div class="tab-content">
 								<div id="by-budget" class="tab-pane clearfix active in" >
-									<form action="{{ route('fotomobil.store') }}" method="post" enctype="multipart/form-data">
+									<form action="{{ route('fotomobil.store', $mobil->id) }}" method="post" enctype="multipart/form-data">
 			  							{{ csrf_field() }}
 										<div class="row">											
                                             <div>
@@ -26,21 +26,17 @@
                                                         <strong>{{ $errors->first('foto') }}</strong>
                                                     </span>
                                                 @endif
-                                            </div>											
+											</div>											
 											<div class="form-group {{ $errors->has('id_mobil') ? 'has error' : '' }}">
-												<label class="control-label">Mobil</label>
-												<select name="id_mobil" class="form-control">
-													<option>-</option>
-													@foreach($mobil as $data)
-													<option value="{{ $data->id }}">{{ $data->nama_mobil }}</option>
-													@endforeach
-												</select>
-												@if ($errors->has('mobil'))
-												<span class="help-block">
-													<strong>{{ $errors->first('mobil') }}</strong>
-												</span>
-												@endif
-											</div>
+												<input type="hidden" name="id_mobil" value="{{ $mobil->id }}">
+												<!-- </select> -->
+												@if ($errors->has('id_mobil'))
+													<span class="help-block">
+														<strong>{{ $errors->first('id_mobil') }}</strong>
+													</span>
+													@endif
+													</div>
+												</div>																					
 											<div class="col-md-12 col-sm-12">
 												<div class="max-w300 m-auto">
 													<button class="site-button btn-block" type="submit">Done</button>												

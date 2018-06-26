@@ -25,10 +25,11 @@ class FotoiklanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        $mobil = Mobil::all();
-        return view('frontend.fotomobil',compact('mobil'));
+        $galeri = Galeri::with('Mobil')->get();
+        $mobil = Mobil::findOrFail($id);
+        return view('frontend.fotomobil',compact('galeri','mobil'));
     }
 
     /**
