@@ -27,31 +27,39 @@
                     <!-- nav toggle button -->
                     <button data-target=".header-nav" data-toggle="collapse" type="button" class="navbar-toggle collapsed" aria-expanded="false" > 
 						<i class="fa fa-bars"></i>
-					</button>
-                    <!-- extra nav -->
-                    <div class="extra-nav">
-                        <div class="extra-cell">
-                            <button id="quik-search-btn" type="button" class="site-button-link"><i class="fa fa-search"></i></button>
-                        </div>
-                    </div>
-                    <!-- Quik search -->
-                    <div class="dlab-quik-search bg-primary ">
-                        <form action="#">
-                            <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
-                            <span id="quik-search-remove"><i class="fa fa-close"></i></span>
-                        </form>
-                    </div>
+					</button>                                        
                     <!-- main nav -->
                     <div class="header-nav navbar-collapse collapse">	
 						<ul class="nav navbar-nav">
-							<li> <a href="/">Home</a></li>
+							<li> <a href="{{route ('home')}}">Home</a></li>
 							<li><a href="#">Mobil<i class="fa fa-chevron-down"></i></a>
 								<ul class="sub-menu">									
-									<li><a href="mobil">Mobil Bekas Terbaru</a></li>
-									<li><a href="sell">Jual Mobilmu</a></li>														
+									<li><a href="{{route ('mobil')}}">Mobil Bekas Terbaru</a></li>
+									<li><a href="{{route ('sell.store')}}">Jual Mobilmu</a></li>														
 								</ul>
 							</li>
-							<li><a href="news">Berita</a>
+							<li><a href="{{route ('news')}}">Berita</a>
+							</li>							
+							<li>
+							@if (Route::has('login'))
+								@auth
+							<a id="navbarDropdown" class="name" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                                    </a>
+								<ul class="sub-menu">									
+									<li><a href="{{route ('iklan')}}">Iklanku</a></li>
+									<li><a href="href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                    @csrf
+                                                    </form></li>														
+								</ul>
+								@else
+								<a href="{{ route('login') }}">Login</a>
+								@endauth
+							@endif
 							</li>
 						</ul>
 					</div>

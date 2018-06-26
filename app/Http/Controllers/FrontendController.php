@@ -11,6 +11,7 @@ use App\Mobil;
 use App\Role;
 use App\Tipe;
 use App\User;
+use Auth;
 
 
 class FrontendController extends Controller
@@ -23,90 +24,68 @@ class FrontendController extends Controller
     public function index()
     {
         $mobil = Mobil::all();
-        return view('frontend.index');
+        return view('frontend.index',compact('mobil'));
     }
 
     public function mobil()
     {
-        $mobils = Mobil::all();
-        //return view('frontend.mobil');
-        return view('frontend.scndcars',['mobils' => $mobils]);
+        $merk = Merk::all();
+        $tipe = Tipe::all();
+        $galeri = Galeri::all();
+        $mobil = Mobil::all();
+        return view('frontend.scndcars',compact('mobil','merk','galeri','tipe')); 
     }
     public function jualmobil()
     {
-        $mobils = Mobil::all();
+        $mobil = Mobil::all();
+        $merk = Merk::all();
+        $tipe = Tipe::all();
+        $lokasi = Lokasi::all();
+        $user = User::all();
         //return view('frontend.mobil');
-        return view('frontend.jualmobil');
+        return view('frontend.jualmobil',compact('mobil','merk','tipe','lokasi','user'));
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'plat_nomor' => 'required|unique:mobils',
+            'nama_mobil' => 'required',
+            'transmisi' => 'required',
+            'no_hp' => 'min:11|required||numeric',
+            'harga' => 'required||numeric',
+            'deskripsi' => 'required',
+            'id_merk' => 'required',
+            'id_tipe' => 'required',
+            'id_lokasi' => 'required',
+            'id_user' => 'required']);
+
+        $mobil = Mobil::create($request->all());
+        return redirect()->route('sell.jualmobil');
+    }
+
+    public function detailmobil($id)
+    {        
+        $mobil = Mobil::findOrFail($id);
+        return view ('frontend.detailcars',compact('mobil'));
+    }
+    public function detailberita($id)
+    {
+        $berita = Berita::findOrFail($id);
+        return view ('frontend.detailnews',compact('berita'));
     }
     public function news()
     {
         $berita = Berita::all();
         //return view('frontend.mobil');
-        return view('frontend.news');
+        return view('frontend.news',compact('berita'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function iklanku()
     {
-        //
-    }    
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $mobil = Auth::user()->Mobil()->paginate(10);
+        $jumlah_data = count($mobil['Mobil']);
+        return view ('frontend.iklan',compact('mobil','jumlah_data'));
+        // $mobil = Mobil::all();
+        // return view('frontend.iklan',compact('mobil'));
     }
 }

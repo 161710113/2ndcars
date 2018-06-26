@@ -14,161 +14,135 @@
 						<div class="dlab-tabs">
 							<div class="tab-content">
 								<div id="by-budget" class="tab-pane clearfix active in" >
-									<form>
+									<form action="{{ route('sell.store') }}" method="post" enctype="multipart/form-data">
+			  							{{ csrf_field() }}
 										<div class="row">
 											<div>
-												<div class="input-group">
-													<label>Enter Registration Year</label>
-													<select class="form-control">
-														<option>Year</option>
-														<option>2010</option>
-														<option>2011</option>
-														<option>2012</option>
-														<option>2013</option>
-														<option>2014</option>
-														<option>2015</option>
-														<option>2016</option>
-														<option>2017</option>
-													</select>
+												<div class="form-group {{ $errors->has('plat_nomor') ? ' has-error' : '' }}">
+													<label>Plat Nomor</label>
+													<input type="text" name="plat_nomor" class="form-control"  required>
+													@if ($errors->has('plat_nomor'))
+														<span class="help-block">
+															<strong>{{ $errors->first('plat_nomor') }}</strong>
+														</span>
+													@endif
 												</div>
 											</div>
 											<div>
-												<div class="input-group">
-													<label>Select Your Car</label>
-													<select class="form-control">
-														<option>Car Name</option>
-														<option>Honda</option>
-														<option>Toyota</option>
-														<option>Mahindra</option>
-														<option>Tata</option>
-														<option>Ford</option>
-														<option>Renault</option>
-													</select>
+												<div class="form-group {{ $errors->has('nama_mobil') ? ' has-error' : '' }}">
+													<label>Judul</label>
+													<input type="text" name="nama_mobil" class="form-control"  required>
+													@if ($errors->has('nama_mobil'))
+														<span class="help-block">
+															<strong>{{ $errors->first('nama_mobil') }}</strong>
+														</span>
+													@endif
 												</div>
 											</div>
 											<div>
-												<div class="input-group">
-													<label>Select Color</label>
-													<select class="form-control">
-														<option>Color</option>
-														<option>White</option>
-														<option>Black</option>
-														<option>Silver</option>
-														<option>Gray</option>
-														<option>Blue</option>
-														<option>Red</option>
-														<option>Brown</option>
-														<option>Green</option>
-														<option>Gold</option>
-														<option>Orange</option>
-														<option>Violet</option>
-														<option>Yellow</option>
+											<div class="form-group {{ $errors->has('transmisi') ? ' has-error' : '' }}">
+													<label>Transmisi</label><br>
+													<select name="transmisi" class="form-control">
+														<option>-</option>														
+														<option value="Automatic">Automatic</option>
+														<option value="Manual">Manual</option>														
 													</select>
+													@if ($errors->has('transmisi'))
+														<span class="help-blocks">
+															<strong>{{$errors->first('transmisi')}}</strong>
+														</span>
+													@endif
 												</div>
 											</div>
                                             <div>
-												<div class="input-group">
-													<label>Enter Registration Year</label>
-													<select class="form-control">
-														<option>Year</option>
-														<option>2010</option>
-														<option>2011</option>
-														<option>2012</option>
-														<option>2013</option>
-														<option>2014</option>
-														<option>2015</option>
-														<option>2016</option>
-														<option>2017</option>
-													</select>
+												<div class="form-group {{ $errors->has('no_hp') ? ' has-error' : '' }}">
+													<label>Nomor Telepon</label>
+													<input type="text" name="no_hp" class="form-control"  required>
+													@if ($errors->has('no_hp'))
+														<span class="help-block">
+															<strong>{{ $errors->first('no_hp') }}</strong>
+														</span>
+													@endif
 												</div>
 											</div>
 											<div>
-												<div class="input-group">
-													<label>Select Your Car</label>
-													<select class="form-control">
-														<option>Car Name</option>
-														<option>Honda</option>
-														<option>Toyota</option>
-														<option>Mahindra</option>
-														<option>Tata</option>
-														<option>Ford</option>
-														<option>Renault</option>
-													</select>
+												<div class="form-group {{ $errors->has('harga') ? ' has-error' : '' }}">
+													<label>Harga</label>
+													<input type="text" name="harga" class="form-control"  required>
+													@if ($errors->has('harga'))
+														<span class="help-block">
+															<strong>{{ $errors->first('harga') }}</strong>
+														</span>
+													@endif
 												</div>
 											</div>
 											<div>
-												<div class="input-group">
-													<label>Select Color</label>
-													<select class="form-control">
-														<option>Color</option>
-														<option>White</option>
-														<option>Black</option>
-														<option>Silver</option>
-														<option>Gray</option>
-														<option>Blue</option>
-														<option>Red</option>
-														<option>Brown</option>
-														<option>Green</option>
-														<option>Gold</option>
-														<option>Orange</option>
-														<option>Violet</option>
-														<option>Yellow</option>
-													</select>
+												<div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
+													<label>Deskripsi</label>
+													<Textarea name="deskripsi" id="deskripsi" class="form-control" required></Textarea>
+													@if ($errors->has('deskripsi'))
+													<span class="help-block">
+														<strong>{{ $errors->first('deskripsi') }}</strong>
+													</span>
+													@endif
 												</div>
 											</div>
                                             <div>
-												<div class="input-group">
-													<label>Enter Registration Year</label>
-													<select class="form-control">
-														<option>Year</option>
-														<option>2010</option>
-														<option>2011</option>
-														<option>2012</option>
-														<option>2013</option>
-														<option>2014</option>
-														<option>2015</option>
-														<option>2016</option>
-														<option>2017</option>
+												<div class="form-group {{ $errors->has('id_merk') ? ' has-error' : '' }}">
+													<label>Merk</label>
+													<select name="id_merk" class="form-control">
+														<option>-</option>
+														@foreach($merk as $data)
+														<option value="{{ $data->id }}">{{ $data->nama_merk }}</option>
+														@endforeach
 													</select>
+													@if ($errors->has('merk'))
+													<span class="help-block">
+														<strong>{{ $errors->first('merk') }}</strong>
+													</span>
+													@endif
 												</div>
 											</div>
 											<div>
-												<div class="input-group">
-													<label>Select Your Car</label>
-													<select class="form-control">
-														<option>Car Name</option>
-														<option>Honda</option>
-														<option>Toyota</option>
-														<option>Mahindra</option>
-														<option>Tata</option>
-														<option>Ford</option>
-														<option>Renault</option>
+												<div class="form-group {{ $errors->has('id_tipe') ? ' has-error' : '' }}">
+													<label>Tipe</label>
+													<select name="id_tipe" class="form-control">
+														<option>-</option>
+														@foreach($tipe as $data)
+														<option value="{{ $data->id }}">{{ $data->nama_tipe }}</option>
+														@endforeach
 													</select>
+													@if ($errors->has('tipe'))
+													<span class="help-block">
+														<strong>{{ $errors->first('tipe') }}</strong>
+													</span>
+													@endif
 												</div>
 											</div>
 											<div>
-												<div class="input-group">
-													<label>Select Color</label>
-													<select class="form-control">
-														<option>Color</option>
-														<option>White</option>
-														<option>Black</option>
-														<option>Silver</option>
-														<option>Gray</option>
-														<option>Blue</option>
-														<option>Red</option>
-														<option>Brown</option>
-														<option>Green</option>
-														<option>Gold</option>
-														<option>Orange</option>
-														<option>Violet</option>
-														<option>Yellow</option>
+												<div class="form-group {{ $errors->has('id_lokasi') ? ' has-error' : '' }}">
+													<label>Lokasi</label>
+													<select name="id_lokasi" class="form-control">
+														<option>-</option>
+														@foreach($lokasi as $data)
+														<option value="{{ $data->id }}">{{ $data->provinsi }}</option>
+														@endforeach
 													</select>
+													@if ($errors->has('lokasi'))
+													<span class="help-block">
+														<strong>{{ $errors->first('lokasi') }}</strong>
+													</span>
+													@endif
+												</div>
+											</div>
+											<div>
+												<div class="form-group {{ $errors->has('id_user') ? ' has-error' : '' }}">
+													<input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
 												</div>
 											</div>
 											<div class="col-md-12 col-sm-12">
 												<div class="max-w300 m-auto">
-													<button class="site-button btn-block" type="button">CONTINUE</button>
+													<button class="site-button btn-block" type="submit">Continue</button>												
 												</div>
 											</div>
 										</div>

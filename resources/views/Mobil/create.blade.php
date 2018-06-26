@@ -19,7 +19,7 @@
                                 <strong>{{ $errors->first('plat_nomor') }}</strong>
                             </span>
                         @endif
-			  		</div>
+			  		  </div>
                       <div class="form-group {{ $errors->has('nama_mobil') ? ' has-error' : '' }}">
 			  			<label class="control-label">Nama Mobil</label>	
 			  			<input type="text" name="nama_mobil" class="form-control"  required>
@@ -121,7 +121,7 @@
 			  				<strong>{{ $errors->first('user') }}</strong>
 			  			</span>
 			  			@endif -->
-						  <input type="hidden" name="id_user" value="{{ Auth::user()->id }}"
+						  <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
                     </div>
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;Done</button>
