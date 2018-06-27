@@ -39,15 +39,15 @@
 								</ul>
 							</li>
 							<li><a href="{{route ('news')}}">Berita</a>
-							</li>							
+							</li>													
 							<li>
 							@if (Route::has('login'))
-								@auth
+								@auth							
 							<a id="navbarDropdown" class="name" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                                         {{ Auth::user()->name }} <span class="caret"></span>
-                                                    </a>
+                                                    </a>																										
 								<ul class="sub-menu">									
-									<li><a href="{{route ('iklan.index')}}">Iklanku</a></li>
+									<li><a href="{{route ('iklan.index')}}">Iklanku</a></li>									
 									<li><a href="href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"">
@@ -58,10 +58,10 @@
 								</ul>
 								@else
 								<a href="{{ route('login') }}">Login</a>
+								<li><a href="{{ route('register') }}">Register</a></li>
 								@endauth
 							@endif
-							</li>							
-							<li><a href="{{ route('register') }}">Register</a></li>
+							</li>														
 						</ul>
 					</div>
                 </div>
