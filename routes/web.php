@@ -20,6 +20,7 @@ Route::get('mobil', 'FrontendController@mobil')->name('mobil');
 Route::get('detail/{id}', 'FrontendController@detailmobil')->name('detail');
 Route::get('news/{id}', 'FrontendController@detailberita')->name('news');
 Route::get('news', 'FrontendController@news')->name('news');
+Route::get('search', 'FrontendController@search')->name('search');
 
 
 

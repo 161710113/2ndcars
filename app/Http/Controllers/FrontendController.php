@@ -79,5 +79,15 @@ class FrontendController extends Controller
         $berita = Berita::orderBy('created_at','desc')->paginate(10);
         //return view('frontend.mobil');
         return view('frontend.news',compact('berita'));
+    }
+    public function search( Request $req){
+        if($req->search == ""){
+            $mobil = search::paginate(5);
+            return view ('frontend.result',compact('mobil'));
+        }else{
+            $mobil = Mobil::where('nama_mobil', 'LIKE', '%' . $req->search . '%')->paginate(5);
+            $mobil->appends($req->only('search'));
+            return view('frontend.result',compact('mobil'));
+        }
     }    
 }

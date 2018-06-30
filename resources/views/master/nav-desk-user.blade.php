@@ -27,7 +27,20 @@
                     <!-- nav toggle button -->
                     <button data-target=".header-nav" data-toggle="collapse" type="button" class="navbar-toggle collapsed" aria-expanded="false" > 
 						<i class="fa fa-bars"></i>
-					</button>                                        
+					</button>    
+					<div class="extra-nav">
+                        <div class="extra-cell">
+                            <button id="quik-search-btn" type="button" class="site-button-link"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+                    <!-- Quik search -->
+                    <div class="dlab-quik-search bg-primary ">
+                        <form action="{{ route('search') }}" method="get">
+						{{ csrf_field() }}
+                            <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
+                            <span id="quik-search-remove"><i class="fa fa-close"></i></span>
+                        </form>
+                    </div>                                    
                     <!-- main nav -->
                     <div class="header-nav navbar-collapse collapse">	
 						<ul class="nav navbar-nav">
