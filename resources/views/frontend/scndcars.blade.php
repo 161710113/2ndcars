@@ -31,7 +31,7 @@
 										@endforeach							
 										<div class="dlab-info text-left">
 											<h4 class="dlab-title"><a href="{{ route('detail',$data->id) }}">{{ $data->nama_mobil }}</a></h4>
-											<p class="dlab-price"><span class="text-black">Rp.{{ $data->harga }}</span></p>
+											<p class="dlab-price"><span class="text-black">Rp.{{ number_format($data->harga) }} </span></p>
 											<div class="m-t10"><i class="flaticon-placeholder font-18"></i>{{ $data->lokasi->provinsi }}</div>
 											<div class="icon-box-btn text-center m-tb20">
 												<ul class="clearfix">													

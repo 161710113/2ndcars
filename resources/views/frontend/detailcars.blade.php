@@ -43,7 +43,7 @@
 					<div class="col-sm-6 col-md-5 col-lg-4">
 						<div class="car-dl-info m-b30">
 							<div class="price">
-								<h2 class="m-t0 m-b5">Harga Rp.{{ $mobil->harga }}</h2>								
+								<h2 class="m-t0 m-b5">Harga Rp.{{ number_format($mobil->harga) }}</h2>								
 							</div>										
 						</div>
 						<div class="used-car-features clearfix m-b30">							
