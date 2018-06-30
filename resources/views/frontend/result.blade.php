@@ -46,9 +46,9 @@
                                 </div>
 								@endif
 								@endforeach	
-                                @else 
-                                <h3><b><i><center>Mohon Maaf Mobil Yang Anda Cari Tidak Ditemukan</center></i></b></h3>
-                                @endif							
+                            @else 
+                            <h3><b><i><center>Mohon Maaf Mobil Yang Anda Cari Tidak Ditemukan</center></i></b></h3>
+                            @endif							
 							</div>
                             <!-- blog grid END -->
                             <!-- Pagination  -->
