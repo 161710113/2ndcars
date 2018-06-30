@@ -101,6 +101,15 @@
                                                     </span>
                                                 @endif
                                             </div>
+                                            <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
+                                                <label class="control-label">Pict</label>	
+                                                <input type="file" id="foto" name="foto" class="validate" accept="image/*" value="{{ $berita->foto }}"  required>
+                                                @if ($errors->has('foto'))
+                                                    <span class="help-block">
+                                                        <strong>{{ $errors->first('foto') }}</strong>
+                                                    </span>
+                                                @endif
+                                            </div>
                                             <div class="form-group {{ $errors->has('id_lokasi') ? ' has-error' : '' }}">
                                                 <label class="control-label">Lokasi</label>	
                                                 <select name="id_lokasi" class="form-control">

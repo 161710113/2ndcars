@@ -22,16 +22,16 @@
 						</div>
 					</div>
 				</div>
-                <div class="row">
+                <div class="row">                
                     <!-- Side bar start -->
                     @foreach($mobil as $data)                    
 					<div class="col-md-3 col-sm-6 m-b30">
 						<div class="icon-bx-wraper bx-style-1 p-a20 text-center">
-                            @foreach($data->galeri as $aye)
+                            <!-- @foreach($data->galeri as $aye) -->
                             <div class="dlab-media"> 
-                                <a href="{{ route('detail',$data->id) }}"><img src="{{ asset('/img/galeri/'.$aye->foto) }}"  alt=""></a> 
+                                <a href="{{ route('detail',$data->id) }}"><img src="{{ asset('/img/mobil/'.$data->foto) }}"  alt=""></a> 
                             </div>		
-                            @endforeach	                            
+                            <!-- @endforeach -->
                             <a href="{{ route('detail',$data->id) }}"><h4>{{ $data->nama_mobil }}</h4></a>
 								<div class="input-group m-b20">
                                 <a class="btn btn-success" href="{{ route('iklan.update',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
@@ -47,9 +47,10 @@
 						</div>
                     </div>
                     @endforeach	        
-                    <!-- Side bar END -->					
+                    <!-- Side bar END -->                    					
                 </div>
-			 </div>
-        </div>		
-	</div>
+                <h4><b><i>*Iklan anda akan terpasang setelah menerima persetujuan pengurus</i></b></h4><br><br>
+			 </div>             
+        </div>        		
+	</div>    
 @endsection

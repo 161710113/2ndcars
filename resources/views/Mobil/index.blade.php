@@ -22,6 +22,7 @@
                       <th>Tipe</th>
                       <th>Lokasi</th>
                       <th>User</th>
+					  <th>Foto</th>
 					  <th>Dibuat pada</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
@@ -41,17 +42,31 @@
                         <td><p>{{ $data->tipe->nama_tipe }}</p></td>
                         <td><p>{{ $data->lokasi->provinsi }}</p></td>
                         <td><p>{{ $data->user->name }}</p></td>
+						<td><img src="../img/mobil/{{$data->foto}}" style="max-height:100px;max-width:100px;margin-top:10px;"></p></td>
 				    	<td>{{ $data->created_at->diffForHumans() }}</td>
-						<td>
+						<!-- <td>
 							<a class="btn btn-default" href="{{ route('mob.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
-						</td>
+						</td> -->
 						<td>
-							<form method="post" action="{{ route('sell.destroy',$data->id) }}">
+							<form method="post" action="{{ route('mob.destroy',$data->id) }}">
 								<input name="_token" type="hidden" value="{{ csrf_token() }}">
 								<input type="hidden" name="_method" value="DELETE">
-
 								<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span>&nbsp;Delete</button>
 							</form>
+						</td>
+						<td>
+						@if($data->status == 1)
+                                <form action="{{ route('mob.publish',$data->id) }}" method="post">
+                                    @csrf
+                                <button type="submit" class="btn btn-warning">unPublish</button>
+                                </form>
+                                @elseif($data->status == 0)
+                                <form action="{{ route('mob.publish',$data->id) }}" method="post">
+                                    @csrf
+                                    <button class="btn btn-info" type="submit">Publish</button>
+                                </form>
+                                </td>
+                                @endif
 						</td>
 				      </tr>
 				      @endforeach	

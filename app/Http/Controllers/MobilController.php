@@ -59,9 +59,29 @@ class MobilController extends Controller
             'id_merk' => 'required',
             'id_tipe' => 'required',
             'id_lokasi' => 'required',
-            'id_user' => 'required']);
+            'id_user' => 'required',
+            'foto' => 'image|max:20048']);
+            $mobil = Mobil::create($request->except('foto'));
+            if ($request->hasFile('foto')) {
+                $file = $request->file('foto');
+                $destinationPath = public_path().'/img/mobil/';
+                $filename = str_random(5).'_'.$file->getClientOriginalName();
+                $uploadSuccess = $file->move($destinationPath, $filename);
+                $mobil->foto = $filename;
+                }
+        $mobil->save();
+        return redirect()->route('mob.index');
+    }
 
-        $mobil = Mobil::create($request->all());
+    public function publish($id)
+    {
+        $mobil = Mobil::find($id);
+        if ($mobil->status === 1) {
+            $mobil->status = 0;
+        } else {
+            $mobil->status= 1;
+        }
+        $mobil->save();
         return redirect()->route('mob.index');
     }
 
@@ -118,10 +138,26 @@ class MobilController extends Controller
             'id_merk' => 'required',
             'id_tipe' => 'required',
             'id_lokasi' => 'required',
-            'id_user' => 'required']);
-        $mobil = Mobil::find($id);
-        $mobil->update($request->all());
-        return redirect()->route('mob.index');
+            'id_user' => 'required',
+            'foto' => 'image|max:20048']);
+            $mobil = Mobil::find($id);
+            $mobil -> update($request->all());
+            // isi field logo jika ada logo yang diupload
+            if ($request->hasFile('foto')) {
+            // Mengambil file yang diupload
+            $uploaded_foto = $request->file('foto');
+            // mengambil extension file
+            $extension = $uploaded_foto->getClientOriginalExtension();
+            // membuat nama file random berikut extension
+            $filename = md5(time()) . '.' . $extension;
+            // menyimpan foto ke folder public\img\mobil
+            $destinationPath = public_path() . DIRECTORY_SEPARATOR . '/img/mobil/';
+            $uploaded_foto->move($destinationPath, $filename);
+            // mengisi field foto di mobil dengan filename yang baru dibuat
+            $mobil->foto = $filename;
+            $mobil->save();
+            }
+        return redirect()->route('iklan.index');
     }
 
     /**
@@ -135,6 +171,6 @@ class MobilController extends Controller
         //
         $mobil =Mobil::findOrFail($id);
         $mobil->delete();
-        return redirect()->route('iklan.index');
+        return redirect()->route('mob.index');
     }
 }

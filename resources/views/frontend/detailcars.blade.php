@@ -17,12 +17,10 @@
                 <div class="row">
                     <!-- Side bar start -->
                     <div class="col-sm-6 col-md-7 col-lg-8">
-						<div>
-                            @foreach($mobil->galeri as $data)
+						<div>                            
 							<div class="item">
-								<div class="dlab-thum-bx"> <img src="{{ asset('/img/galeri/'.$data->foto) }}" style="max-height:280px;max-width:500px;margin-top:10px;" alt=""> </div>
-							</div>
-                            @endforeach							
+								<div class="dlab-thum-bx"> <img src="{{ asset('/img/mobil/'.$mobil->foto) }}" style="max-height:280px;max-width:500px;margin-top:10px;" alt=""> </div>
+							</div>                            
 						</div>
 						<div class="m-tb30">
 							<h3 class="h3 m-t0">{{ $mobil->nama_mobil }}</h3>

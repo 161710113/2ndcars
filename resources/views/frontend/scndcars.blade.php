@@ -22,13 +22,13 @@
                             <!-- blog grid  -->
                             <div id="masonry" class="dlab-blog-grid-3 used-car-info">
 								@foreach($mobil as $data)
+								@if($data->status == 0)
+    							@else
 								<div class="post card-container col-lg-6 col-md-6 col-sm-6 col-xs-12">										
-									<div class="dlab-feed-list m-b30 text-left">
-										@foreach($data->galeri as $aye)
+									<div class="dlab-feed-list m-b30 text-left">																			
 										<div class="dlab-media"> 
-											<a href="{{ route('detail',$data->id) }}"><img src="{{ asset('/img/galeri/'.$aye->foto) }}" style="height:400px;width:600px;margin-top:10px;" alt=""></a> 
-										</div>		
-										@endforeach							
+											<a href="{{ route('detail',$data->id) }}"><img src="{{ asset('img/mobil/'.$data->foto) }}" style="height:400px;width:600px;margin-top:10px;" alt=""></a> 
+										</div>												
 										<div class="dlab-info text-left">
 											<h4 class="dlab-title"><a href="{{ route('detail',$data->id) }}">{{ $data->nama_mobil }}</a></h4>
 											<p class="dlab-price"><span class="text-black">Rp.{{ number_format($data->harga) }} </span></p>
@@ -43,6 +43,7 @@
 										</div>										
 									</div>
                                 </div>
+								@endif
 								@endforeach								
 							</div>
                             <!-- blog grid END -->

@@ -32,6 +32,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['auth','role:admin']],function()
     Route::resource('galeri','GaleriController');
     Route::resource('lokasi','LokasiController');
     Route::resource('mob','MobilController');
+    Route::post('mob/{publish}', 'MobilController@Publish')->name('mob.publish');
     Route::resource('merk','MerkController');
     Route::resource('tipe','TipeController');
     

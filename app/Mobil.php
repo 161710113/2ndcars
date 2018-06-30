@@ -8,7 +8,7 @@ class Mobil extends Model
 {
     protected $table = 'mobils';
     protected $fillable = array('plat_nomor', 'nama_mobil', 'transmisi','no_hp','harga','deskripsi',
-                                    'id_merk','id_tipe','id_lokasi','id_user');
+                                    'id_merk','id_tipe','id_lokasi','id_user','foto','status');
     public $timestamp = true;
 
     public function Galeri() {

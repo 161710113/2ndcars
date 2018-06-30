@@ -123,6 +123,15 @@
 			  			@endif -->
 						  <input type="hidden" name="id_user" value="{{ Auth::user()->id }}">
                     </div>
+					<div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
+			  			<label class="control-label">Pict</label>	
+			  			<input type="file" id="foto" name="foto" class="validate" accept="image/*" required>
+			  			@if ($errors->has('foto'))
+                            <span class="help-block">
+                                <strong>{{ $errors->first('foto') }}</strong>
+                            </span>
+                        @endif
+                      </div>
 			  		<div class="form-group">
 			  			<button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span>&nbsp;Done</button>
 			  		</div>

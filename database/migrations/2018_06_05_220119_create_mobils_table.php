@@ -29,6 +29,8 @@ class CreateMobilsTable extends Migration
             $table->foreign('id_lokasi')->references('id')->on('lokasis')->onDelete('CASCADE');
             $table->unsignedInteger('id_user');
             $table->foreign('id_user')->references('id')->on('users')->onDelete('CASCADE');
+            $table->string('foto');
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }
