@@ -50,6 +50,7 @@
                             <h3><b><i><center>Mohon Maaf Mobil Yang Anda Cari Tidak Ditemukan</center></i></b></h3>
                             @endif							
 							</div>
+							<
                             <!-- blog grid END -->
                             <!-- Pagination  -->
                             <!-- <div class="pagination-bx col-lg-12 clearfix ">
