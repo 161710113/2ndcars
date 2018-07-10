@@ -157,7 +157,7 @@ class IklanController extends Controller
      */
     public function destroy($id)
     {
-        $mobil =Mobil::destroy($id);        
+        $mobil = Mobil::destroy($id);        
         return redirect()->back();
     }
 }

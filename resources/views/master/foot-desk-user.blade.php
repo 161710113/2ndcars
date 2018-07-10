@@ -6,9 +6,9 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-6 text-left"> © Copyright 2018 Cars Zone Developed By <span class="text-primary"> 2ndCars</span> </div>
                     <div class="col-md-6 col-sm-6 text-right "> 
-						<a href="page-about.html"> About Us</a> | 
-						<a href="page-privacy-policy.html"> Contact Us</a> | 
-						<a href="page-about.html"> Privacy Policy</a> 
+						<a href="#"> About Us</a> | 
+						<a href="#"> Contact Us</a> | 
+						<a href="#"> Privacy Policy</a> 
 					</div>
                 </div>
             </div>

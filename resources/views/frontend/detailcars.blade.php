@@ -35,7 +35,17 @@
 							</ul>
                             <br>                            							
 						</div>	
-                        {{ $mobil->deskripsi }}					
+						{{ $mobil->deskripsi }}
+						<br><hr>
+						<div class="clearfix">
+							<ul class="nav theme-tabs m-b10">
+								<li role="presentation" class="active"><a data-toggle="tab"  aria-controls="specifications"  href="#specifications">More Photo</a></li>                                								
+							</ul>
+                            <br>                            							
+						</div>
+						@foreach($mobil->galeri as $data)
+						<img src="{{ asset('/img/galeri/'.$data->foto) }}" style="max-height:280px;max-width:500px;margin-top:10px;" alt="">
+						@endforeach
 					</div>
                     <!-- Side bar END -->
 					<div class="col-sm-6 col-md-5 col-lg-4">

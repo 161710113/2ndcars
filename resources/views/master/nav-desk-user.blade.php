@@ -7,10 +7,10 @@
 							<li>
 								<a href="javascript:void(0);"><i class="fa fa-envelope-o"></i> `secondcars@gmail.com`</a>
 							</li>
-							<li><a href="#" class="site-button-link facebook hover"><i class="fa fa-facebook"></i></a></li>
-							<li><a href="#" class="site-button-link google-plus hover"><i class="fa fa-google-plus"></i></a></li>
-							<li><a href="#" class="site-button-link instagram hover"><i class="fa fa-instagram"></i></a></li>
-							<li><a href="#" class="site-button-link github hover"><i class="fa fa-github"></i></a></li>
+							<li><a href="https://web.facebook.com/haikal.maulanafirdaus.3" class="site-button-link facebook hover"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="https://plus.google.com/111046379192958989756" class="site-button-link google-plus hover"><i class="fa fa-google-plus"></i></a></li>
+							<li><a href="https://www.instagram.com/haikalmaul/?hl=en" class="site-button-link instagram hover"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="https://github.com/161710113" class="site-button-link github hover"><i class="fa fa-github"></i></a></li>
 						</ul>
 					</div>
 				</div>
