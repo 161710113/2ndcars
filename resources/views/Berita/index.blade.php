@@ -12,9 +12,9 @@
 				  	<thead>
 			  		<tr>
 			  		  <th>No</th>
-					  <th>Title</th>
-					  <th>Content</th>
-                      <th>Pict</th>
+					  <th>Judul</th>
+					  {{-- <th>Content</th> --}}
+                      <th>Sampul</th>
 					  <th>Dibuat pada</th>
 					  <th colspan="3">Aksi</th>
 			  		</tr>
@@ -25,11 +25,14 @@
 				  	  <tr>
 				    	<td>{{ $no++ }}</td>
 				    	<td><p>{{ $data->judul }}</p></td>
-				    	<td><p>{{ substr($data['isi'],0,50) }}<a href="{{ route('berita.show',$data->id) }}">...Read More</a></p></td>
+				    	{{-- <td><p>{!! substr($data['isi'],0,50) !!}</p></td> --}}
                         <td><img src="../img/berita/{{$data->foto}}" style="max-height:100px;max-width:100px;margin-top:10px;"></td>
 				    	<td>{{ $data->created_at->diffForHumans() }}</td>
 						<td>
 							<a class="btn btn-default" href="{{ route('berita.edit',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+						</td>
+						<td>
+						<a class="btn btn-info" href="{{ route('berita.show',$data->id) }}">Show</a>
 						</td>
 						<td>
 							<form method="post" action="{{ route('berita.destroy',$data->id) }}">

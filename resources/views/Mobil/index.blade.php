@@ -17,7 +17,7 @@
                       <th>Transmisi</th>
                       <th>Nomor HP</th>
                       <th>Harga</th>
-                      <th>Deskripsi</th>
+                      {{-- <th>Deskripsi</th> --}}
                       <th>Merk</th>
                       <th>Tipe</th>
                       <th>Lokasi</th>
@@ -37,7 +37,7 @@
                         <td><p>{{ $data->transmisi }}</p></td>
                         <td><p>{{ $data->no_hp }}</p></td>
                         <td><p>{{ $data->harga }}</p></td>
-                        <td><p>{{ substr($data['deskripsi'],0,20) }}<a href="{{ route('mob.show',$data->id) }}">...Read More</a></p></td>
+                        {{-- <td><p>{!! substr($data['deskripsi'],0,20) !!}<a href="{{ route('mob.show',$data->id) }}">...Read More</a></p></td> --}}
                         <td><p>{{ $data->merk->nama_merk }}</p></td>
                         <td><p>{{ $data->tipe->nama_tipe }}</p></td>
                         <td><p>{{ $data->lokasi->provinsi }}</p></td>

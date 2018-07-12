@@ -14,7 +14,7 @@
 			  				Nomor Handphone : <b>{{ $mobil->no_hp }}</b><br>
                             Lokasi : <b>{{ $mobil->lokasi->provinsi }}</b><br>
                             Harga : <b>Rp. {{ $mobil->harga }}</b><br>
-                            Deskripsi : <br><b>{{ $mobil->deskripsi }}</b>
+                            Deskripsi : <br><b>{!! $mobil->deskripsi !!}</b>
 			  		</div>
 			  		<div class="panel-title pull-right"><a href="{{ url()->previous() }}"><button class="btn btn-success">Selesai</button></a>
 			  	</div>

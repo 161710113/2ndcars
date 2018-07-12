@@ -13,7 +13,7 @@
 			  		<input name="_method" type="hidden" value="PATCH">
                     {{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('judul') ? ' has-error' : '' }}">
-			  			<label class="control-label">Title</label>	
+			  			<label class="control-label">Judul</label>	
 			  			<input type="text" name="judul" class="form-control" value="{{ $berita->judul }}"  required>
 			  			@if ($errors->has('judul'))
                             <span class="help-block">
@@ -23,8 +23,8 @@
 			  		</div>
 
 			  		<div class="form-group {{ $errors->has('isi') ? ' has-error' : '' }}">
-			  			<label class="control-label">Content</label>	
-			  			<Textarea name="isi" class="form-control"  required> {{ $berita->isi }} </Textarea>
+			  			<label class="control-label">Isi BErita</label>	
+			  			<textarea name="isi" class="form-control"> {!! $berita->isi !!} </textarea>
 			  			@if ($errors->has('isi'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('isi') }}</strong>
@@ -32,7 +32,7 @@
                         @endif
 			  		</div>
                       <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
-			  			<label class="control-label">Pict</label>	
+			  			<label class="control-label">Sampul</label>	
 			  			<input type="file" id="foto" name="foto" class="validate" accept="image/*" value="{{ $berita->foto }}"  required>
 			  			@if ($errors->has('foto'))
                             <span class="help-block">

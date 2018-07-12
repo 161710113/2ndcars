@@ -9,7 +9,7 @@
 			  		<input name="_method" type="hidden" value="PATCH">
 			  		{{ csrf_field() }}
 			  		<div class="form-group {{ $errors->has('plat_nomor') ? ' has-error' : '' }}">
-			  			<label class="control-label">plat_nomor</label>	
+			  			<label class="control-label">Plat Nomor</label>	
 			  			<input type="text" name="plat_nomor" class="form-control" value="{{ $mobil->plat_nomor }}"  required>
 			  			@if ($errors->has('plat_nomor'))
                             <span class="help-block">
@@ -18,7 +18,7 @@
                         @endif
 			  		</div>
                       <div class="form-group {{ $errors->has('nama_mobil') ? ' has-error' : '' }}">
-			  			<label class="control-label">nama_mobil</label>	
+			  			<label class="control-label">Nama Mobil</label>	
 			  			<input type="text" name="nama_mobil" class="form-control" value="{{ $mobil->nama_mobil }}"  required>
 			  			@if ($errors->has('nama_mobil'))
                             <span class="help-block">
@@ -43,7 +43,7 @@
 								@endif
 							</div>
                       <div class="form-group {{ $errors->has('no_hp') ? ' has-error' : '' }}">
-			  			<label class="control-label">no_hp</label>	
+			  			<label class="control-label">No Handphone</label>	
 			  			<input type="text" name="no_hp" class="form-control" value="{{ $mobil->no_hp }}"  required>
 			  			@if ($errors->has('no_hp'))
                             <span class="help-block">
@@ -52,7 +52,7 @@
                         @endif
 			  		</div>
                       <div class="form-group {{ $errors->has('harga') ? ' has-error' : '' }}">
-			  			<label class="control-label">harga</label>	
+			  			<label class="control-label">Harga</label>	
 			  			<input type="text" name="harga" class="form-control" value="{{ $mobil->harga }}"  required>
 			  			@if ($errors->has('harga'))
                             <span class="help-block">
@@ -62,7 +62,7 @@
 			  		</div>
                       <div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
 			  			<label class="control-label">Deskrips</label>	
-			  			<Textarea name="deskripsi" class="form-control"  required> {{ $mobil->deskripsi }} </Textarea>
+			  			<textarea name="deskripsi" class="form-control"  required> {!! $mobil->deskripsi !!} </textarea>
 			  			@if ($errors->has('deskripsi'))
                             <span class="help-block">
                                 <strong>{{ $errors->first('deskripsi') }}</strong>

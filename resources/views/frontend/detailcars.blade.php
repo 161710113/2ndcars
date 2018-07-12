@@ -35,7 +35,7 @@
 							</ul>
                             <br>                            							
 						</div>	
-						{{ $mobil->deskripsi }}
+						{!! $mobil->deskripsi !!}
 						<br><hr>
 						<div class="clearfix">
 							<ul class="nav theme-tabs m-b10">

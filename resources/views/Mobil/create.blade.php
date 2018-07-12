@@ -58,8 +58,8 @@
                         @endif
 			  		</div>
                       <div class="form-group {{ $errors->has('deskripsi') ? 'has error' : ''}} ">
-			  			<label class="control-label">deskripsi</label>
-			  			<Textarea name="deskripsi" id="deskripsi" class="form-control" required></Textarea>
+			  			<label class="control-label">Deskripsi</label>
+			  			<textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
 			  			@if ($errors->has('deskripsi'))
 			  			<span class="help-block">
 			  				<strong>{{ $errors->first('deskripsi') }}</strong>

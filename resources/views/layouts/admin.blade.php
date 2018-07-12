@@ -84,6 +84,8 @@
 
     <!-- Main JS-->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    <script src="{{ asset('assets/tinymce/tinymce.min.js') }}"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
 
 </body>
 

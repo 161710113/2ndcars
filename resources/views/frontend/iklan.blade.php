@@ -26,12 +26,10 @@
                     <!-- Side bar start -->
                     @foreach($mobil as $data)                    
 					<div class="col-md-3 col-sm-6 m-b30">
-						<div class="icon-bx-wraper bx-style-1 p-a20 text-center">
-                            <!-- @foreach($data->galeri as $aye) -->
+						<div class="icon-bx-wraper bx-style-1 p-a20 text-center">                             
                             <div class="dlab-media"> 
                                 <a href="{{ route('detail',$data->id) }}"><img src="{{ asset('/img/mobil/'.$data->foto) }}"  alt=""></a> 
-                            </div>		
-                            <!-- @endforeach -->
+                            </div>
                             <a href="{{ route('detail',$data->id) }}"><h4>{{ $data->nama_mobil }}</h4></a>
 								<div class="input-group m-b20">
                                     <a class="btn btn-success" href="{{ route('iklan.update',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>

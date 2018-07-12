@@ -54,5 +54,7 @@
 
 <script src="{{ asset('assets/user/js/combine.js') }}"></script>
 <script src="{{ asset('assets/user/js/jquery.searchable-1.0.0.min.js') }}"></script>
+<script src="{{ asset('assets/tinymce/tinymce.min.js') }}"></script>
+  <script>tinymce.init({ selector:'textarea' });</script>
 </body>
 </html>

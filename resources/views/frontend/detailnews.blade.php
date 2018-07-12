@@ -29,7 +29,7 @@
                     </div>
                     <div class="dlab-post-media dlab-img-effect zoom-slow"> <a href="#"><img src="images/blog/default/thum1.jpg" alt=""></a> </div>
                     <div class="dlab-post-text">
-                    {{ $berita->isi }}              
+                    {!! $berita->isi !!}              
                     </div>
                     
                 </div>                

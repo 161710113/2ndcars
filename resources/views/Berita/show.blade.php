@@ -9,7 +9,7 @@
 			  			<img name="foto" src="{{ asset('img/berita/'.$berita->foto)  }}" style="max-height:500px;max-width:500px;margin-top:10px;">
 			  		</div>
 			  				<h1><b>{{ $berita->judul }}</b></h1><br>
-			  				{{ $berita->isi }}
+			  				{!! $berita->isi !!}
 			  		</div>
 			  		<div class="panel-title pull-right"><a href="{{ url()->previous() }}"><button class="btn btn-success">Selesai</button></a>
 			  	</div>

@@ -12,7 +12,7 @@
 			  	<form action="{{ route('berita.store') }}" method="post" enctype="multipart/form-data">
 			  		{{ csrf_field() }}
                       <div class="form-group {{ $errors->has('judul') ? ' has-error' : '' }}">
-			  			<label class="control-label">Title</label>	
+			  			<label class="control-label">Judul</label>	
 			  			<input type="text" name="judul" class="form-control"  required>
 			  			@if ($errors->has('judul'))
                             <span class="help-block">
@@ -23,7 +23,7 @@
 
 			  		<div class="form-group {{ $errors->has('isi') ? 'has error' : ''}} ">
 			  			<label class="control-label">Isi Berita</label>
-			  			<Textarea name="isi" id="isi" class="form-control" required></Textarea>
+			  			<textarea name="isi" id="isi" class="form-control"></textarea>
 			  			@if ($errors->has('isi'))
 			  			<span class="help-block">
 			  				<strong>{{ $errors->first('isi') }}</strong>
@@ -32,7 +32,7 @@
 			  		</div>
 
                     <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
-			  			<label class="control-label">Pict</label>	
+			  			<label class="control-label">Sampul</label>	
 			  			<input type="file" id="foto" name="foto" class="validate" accept="image/*" required>
 			  			@if ($errors->has('foto'))
                             <span class="help-block">

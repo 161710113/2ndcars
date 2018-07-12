@@ -25,7 +25,7 @@
 										<h4 class="post-title"> <a href="/news/{{$data->id}}" title="Video post">{{ $data->judul }}</a> </h4>
 									</div>
 									<div class="ow-post-text">
-										<p>{{ substr($data['isi'],0,150) }}....</p>
+										<p>{!! substr($data['isi'],0,150) !!}....</p>
 									</div>
 									<div class="ow-post-readmore "> 
 										<a href="/news/{{$data->id}}" rel="bookmark" class="site-button-link"> Read More <i class="fa fa-angle-right"></i></a> 
