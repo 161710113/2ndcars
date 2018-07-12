@@ -70,9 +70,13 @@ class FotoiklanController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
+        // $galeri = Galeri::findOrFail($id);
+        $galeri = Galeri::with('Mobil')->get();
+        $mobil = Mobil::all();
+        return view('frontend.fotomobildelete',compact('galeri','mobil'));
     }
 
     /**

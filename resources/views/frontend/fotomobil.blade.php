@@ -19,7 +19,7 @@
 										<div class="row">											
                                             <div>
                                             <div class="form-group {{ $errors->has('foto') ? ' has-error' : '' }}">
-                                                <label class="control-label">Foto</label>	
+                                                <label class="control-label">Interior</label>	
                                                 <input type="file" id="foto" name="foto" class="validate" accept="image/*" required>
                                                 @if ($errors->has('foto'))
                                                     <span class="help-block">

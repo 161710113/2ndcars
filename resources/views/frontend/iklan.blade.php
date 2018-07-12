@@ -34,8 +34,11 @@
                             <!-- @endforeach -->
                             <a href="{{ route('detail',$data->id) }}"><h4>{{ $data->nama_mobil }}</h4></a>
 								<div class="input-group m-b20">
-                                <a class="btn btn-success" href="{{ route('iklan.update',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
-								</div>
+                                    <a class="btn btn-success" href="{{ route('iklan.update',$data->id) }}"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>
+                                </div>
+                                <div class="input-group m-b20">
+                                    <a class="btn btn-success" href="{{ route('fotomobil',$data->id) }}"><span class="glyphicon glyphicon-picture"></span>&nbsp;Tambah Gambar</a>
+                                </div>                           
 								<div class="input-group m-b20">
                                     <form method="post" action="{{ route('iklan.destroy',$data->id) }}" >
                                         <input name="_token" type="hidden" value="{!! csrf_token() !!}">

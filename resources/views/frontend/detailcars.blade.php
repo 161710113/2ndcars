@@ -19,7 +19,7 @@
                     <div class="col-sm-6 col-md-7 col-lg-8">
 						<div>                            
 							<div class="item">
-								<div class="dlab-thum-bx"> <img src="{{ asset('/img/mobil/'.$mobil->foto) }}" style="max-height:280px;max-width:500px;margin-top:10px;" alt=""> </div>
+								<div class="dlab-thum-bx"> <img src="{{ asset('/img/mobil/'.$mobil->foto) }}" style="max-height:480px;max-width:700px;margin-top:10px;" alt=""> </div>
 							</div>                            
 						</div>
 						<div class="m-tb30">
@@ -44,7 +44,7 @@
                             <br>                            							
 						</div>
 						@foreach($mobil->galeri as $data)
-						<img src="{{ asset('/img/galeri/'.$data->foto) }}" style="max-height:280px;max-width:500px;margin-top:10px;" alt="">
+						<img src="{{ asset('/img/galeri/'.$data->foto) }}" style="max-height:250px;max-width:300px;margin-top:10px;" alt="">
 						@endforeach
 					</div>
                     <!-- Side bar END -->
