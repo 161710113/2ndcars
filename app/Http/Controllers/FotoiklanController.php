@@ -40,25 +40,26 @@ class FotoiklanController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'foto' => 'image|max:20048',
-            'id_mobil' => 'required'
-        ]);
-        $galeri = Galeri::create($request->except('foto'));
-        // isi field foto jika ada foto yang diupload
+        // $this->validate($request, [
+        //     'foto' => 'image|max:20048',
+        //     'id_mobil' => 'required'
+        // ]);        
         if ($request->hasFile('foto')) {
-        // Mengambil file yang diupload
-        $uploaded_foto = $request->file('foto');
-        // mengambil extension file
-        $extension = $uploaded_foto->getClientOriginalExtension();
-        // membuat nama file random berikut extension
-        $filename = md5(time()) . '.' . $extension;
-        // menyimpan foto ke folder public\img\galeri
-        $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img\galeri';
-        $uploaded_foto->move($destinationPath, $filename);
-        // mengisi field foto di galeri dengan filename yang baru dibuat
-        $galeri->foto = $filename;
-        $galeri->save();
+            foreach ($request->foto as $foto){
+                $filename = $foto->getClientOriginalName();
+                $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img\galeri';
+                $foto->move($destinationPath, $filename);
+                $galeri = Galeri::create($request->except('foto'));
+                $galeri->foto = $filename;
+                $galeri->save();
+        // $uploaded_foto = $request->file('foto');        
+        // $extension = $uploaded_foto->getClientOriginalExtension();        
+        // $filename = md5(time()) . '.' . $extension;        
+        // $destinationPath = public_path() . DIRECTORY_SEPARATOR . 'img\galeri';
+        // $uploaded_foto->move($destinationPath, $filename);        
+        // $galeri->foto = $filename;
+        // $galeri->save();
+    }
         }
 
         return redirect()->route('mobil');

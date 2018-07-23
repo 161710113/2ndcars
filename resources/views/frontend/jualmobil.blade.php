@@ -18,17 +18,6 @@
 			  							{{ csrf_field() }}
 										<div class="row">
 											<div>
-												<div class="form-group {{ $errors->has('plat_nomor') ? ' has-error' : '' }}">
-													<label>Plat Nomor</label>
-													<input type="text" name="plat_nomor" class="form-control"  required>
-													@if ($errors->has('plat_nomor'))
-														<span class="help-block">
-															<strong>{{ $errors->first('plat_nomor') }}</strong>
-														</span>
-													@endif
-												</div>
-											</div>
-											<div>
 												<div class="form-group {{ $errors->has('nama_mobil') ? ' has-error' : '' }}">
 													<label>Judul</label>
 													<input type="text" name="nama_mobil" class="form-control"  required>
@@ -38,7 +27,51 @@
 														</span>
 													@endif
 												</div>
-											</div>
+											</div>											
+												<div>
+												<div class="form-group {{ $errors->has('harga') ? ' has-error' : '' }}">
+													<label>Harga</label>
+													<input type="text" name="harga" class="form-control"  required>
+													@if ($errors->has('harga'))
+														<span class="help-block">
+															<strong>{{ $errors->first('harga') }}</strong>
+														</span>
+													@endif
+													</div>
+												</div>
+												<div>
+														<div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
+															<label>Deskripsi</label>
+															<textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
+															@if ($errors->has('deskripsi'))
+															<span class="help-block">
+																<strong>{{ $errors->first('deskripsi') }}</strong>
+															</span>
+															@endif
+														</div>
+													</div>
+													<div>
+															<div class="form-group {{ $errors->has('no_hp') ? ' has-error' : '' }}">
+																<label>Nomor Telepon</label>
+																<input type="text" name="no_hp" class="form-control"  required>
+																@if ($errors->has('no_hp'))
+																	<span class="help-block">
+																		<strong>{{ $errors->first('no_hp') }}</strong>
+																	</span>
+																@endif
+															</div>
+														</div>
+												<div>
+												<div class="form-group {{ $errors->has('plat_nomor') ? ' has-error' : '' }}">
+													<label>Plat Nomor</label>
+													<input type="text" name="plat_nomor" class="form-control"  required>
+													@if ($errors->has('plat_nomor'))
+														<span class="help-block">
+															<strong>{{ $errors->first('plat_nomor') }}</strong>
+														</span>
+													@endif
+												</div>
+											</div>																
 											<div>
 											<div class="form-group {{ $errors->has('transmisi') ? ' has-error' : '' }}">
 													<label>Transmisi</label><br>
@@ -53,40 +86,7 @@
 														</span>
 													@endif
 												</div>
-											</div>
-                                            <div>
-												<div class="form-group {{ $errors->has('no_hp') ? ' has-error' : '' }}">
-													<label>Nomor Telepon</label>
-													<input type="text" name="no_hp" class="form-control"  required>
-													@if ($errors->has('no_hp'))
-														<span class="help-block">
-															<strong>{{ $errors->first('no_hp') }}</strong>
-														</span>
-													@endif
-												</div>
-											</div>
-											<div>
-												<div class="form-group {{ $errors->has('harga') ? ' has-error' : '' }}">
-													<label>Harga</label>
-													<input type="text" name="harga" class="form-control"  required>
-													@if ($errors->has('harga'))
-														<span class="help-block">
-															<strong>{{ $errors->first('harga') }}</strong>
-														</span>
-													@endif
-												</div>
-											</div>
-											<div>
-												<div class="form-group {{ $errors->has('deskripsi') ? ' has-error' : '' }}">
-													<label>Deskripsi</label>
-													<textarea name="deskripsi" id="deskripsi" class="form-control"></textarea>
-													@if ($errors->has('deskripsi'))
-													<span class="help-block">
-														<strong>{{ $errors->first('deskripsi') }}</strong>
-													</span>
-													@endif
-												</div>
-											</div>
+											</div>                                            																						
                                             <div>
 												<div class="form-group {{ $errors->has('id_merk') ? ' has-error' : '' }}">
 													<label>Merk</label>
